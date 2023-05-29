@@ -3,14 +3,13 @@ package poker.evaluator;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import game.card.Card;
 import poker.evaluator.exceptions.InvalidHandException;
 import util.Constant;
+import util.LittleEndian;
 import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
@@ -67,7 +66,7 @@ public class Evaluator implements IEvaluator
 		{
 		super();
 
-		ranks = getHandRanks(path);
+		ranks = LittleEndian.toByteBuffer(path);
 		}
 
 	/**
@@ -110,24 +109,5 @@ public class Evaluator implements IEvaluator
 	private final int getNewPosition(final int position)
 		{
 		return ranks.getInt(position * 4);
-		}
-
-	/**
-	 * Retourne les bytes d'un fichier au format little endian.
-	 * 
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
-	private static final ByteBuffer getHandRanks(final Path path) throws IOException
-		{
-		final var bytes = Files.readAllBytes(notNull(path));
-
-		final var buffer = ByteBuffer.wrap(bytes);
-
-		buffer.order(ByteOrder.LITTLE_ENDIAN);
-
-		return buffer;
 		}
 	}
