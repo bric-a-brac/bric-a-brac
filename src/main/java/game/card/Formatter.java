@@ -12,8 +12,6 @@ public class Formatter
 	{
 	public static final Formatter CARDS = new Formatter();
 
-	//private static final String[] CARDS = ICard.CARDS.split("(?!^)");
-
 	private final String[] symbols;
 
 	/**

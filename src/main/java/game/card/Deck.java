@@ -13,7 +13,7 @@ import static util.Argument.notNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class Deck<T extends Card> implements IDeck<T>
+public class Deck<T extends ICard> implements IDeck<T>
 	{
 	protected final List<T> cards;
 
