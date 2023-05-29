@@ -1,2 +1,1 @@
-# bric-a-brac
-Bric à Brac
+# Bric à Brac
