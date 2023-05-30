@@ -1,5 +1,6 @@
 package game.card;
 
+import org.apache.commons.lang3.NotImplementedException;
 import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
@@ -8,40 +9,59 @@ import static util.Argument.notNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class Formatter
+public class Formatter implements IFormatter
 	{
-	public static final Formatter SYMBOLS = new Formatter(ICard.getSymbols());
-
-	private final String[] symbols;
-
 	/**
-	 * @throws NullArgumentException
-	 * 
 	 * @since 0.1.0
 	 */
-	public Formatter(final String[] symbols)
+	public static final IFormatter CARDS = new Formatter()
 		{
-		super();
+		//private static final int START = 0x1F0A1;
 
-		this.symbols = notNull(symbols);
+		/**
+		 * @throws NullArgumentException
+		 * 
+		 * @since 0.1.0
+		 */
+		@Override
+		public String toString(final ICard card)
+			{
+			notNull(card);
+
+			//var codePoint = START;
+			var codePoint = 0x1F0A1;
+
+			codePoint += card.getSuit().ordinal() * 15;
+			codePoint += card.getRank().ordinal() + 1;
+
+			return new String(Character.toChars(codePoint));
+			}
+		};
+
+	/**
+	 * @since 0.1.0
+	 */
+	@Override
+	public String toString(final ICard card)
+		{
+		throw new NotImplementedException();
 		}
 
 	/**
 	 * @since 0.1.0
 	 */
-	public final String[] getSymbols()
+	@Override
+	public String toString(final Rank rank)
 		{
-		return symbols;
+		throw new NotImplementedException();
 		}
 
 	/**
-	 * @throws NullArgumentException
-	 * 
 	 * @since 0.1.0
 	 */
-	public final String format(final ICard card)
+	@Override
+	public String toString(final Suit suit)
 		{
-		// TODO: Pas sur que ça fonctionne juste pr l'instant
-		return symbols[notNull(card).getValue()];
+		throw new NotImplementedException();
 		}
 	}

@@ -1,5 +1,6 @@
 package game.card;
 
+import org.apache.commons.lang3.NotImplementedException;
 import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
@@ -57,6 +58,15 @@ public class Card implements ICard
 	public final int getValue()
 		{
 		return rank.ordinal() * SUIT_LENGTH + suit.ordinal();
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	@Override
+	public int compareTo(final ICard card)
+		{
+		throw new NotImplementedException();
 		}
 
 	/**

@@ -1,6 +1,8 @@
 package game.card;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import util.Util;
 
 /**
@@ -9,8 +11,9 @@ import util.Util;
  * @version 0.1.0
  * @since 0.1.0
  */
-public interface ICard
+public interface ICard extends Comparable<ICard>
 	{
+	@Deprecated
 	public static final String CARDS = "🃒🃓🃔🃕🃖🃗🃘🃙🃚🃛🃝🃞🃑🃂🃃🃄🃅🃆🃇🃈🃉🃊🃋🃍🃎🃁🂲🂳🂴🂵🂶🂷🂸🂹🂺🂻🂽🂾🂱🂢🂣🂤🂥🂦🂧🂨🂩🂪🂫🂭🂮🂡";
 
 	public static final String SUITS = "♠♥♦♣";
@@ -41,6 +44,26 @@ public interface ICard
 	/**
 	 * @since 0.1.0
 	 */
+	@SuppressWarnings("unchecked")
+	public static <T extends ICard> List<T> get()
+		{
+		final var cards = new ArrayList<ICard>();
+
+		for (final Rank rank : Rank.values())
+			{
+			for (final Suit suit : Suit.values())
+				{
+				cards.add(new Card(rank, suit));
+				}
+			}
+
+		return (List<T>) cards;
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	@Deprecated
 	public static String[] getSymbols()
 		{
 		final var size = CARDS.length() / 2;

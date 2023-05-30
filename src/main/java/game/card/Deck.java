@@ -5,9 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 import org.apache.commons.lang3.NotImplementedException;
-import org.apache.commons.math3.random.MersenneTwister;
-
+//import org.apache.commons.math3.random.MersenneTwister;
 import game.card.exceptions.NoMoreCardException;
+import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 
@@ -19,13 +19,17 @@ public class Deck<T extends ICard> implements IDeck<T>
 	{
 	protected final List<T> cards;
 
-	@SuppressWarnings("unused")
-	private Deck()
+	/**
+	 * @since 0.1.0
+	 */
+	public Deck()
 		{
-		throw new UnsupportedOperationException();
+		this(ICard.get());
 		}
 
 	/**
+	 * @throws NullArgumentException
+	 * 
 	 * @since 0.1.0
 	 */
 	public Deck(final Supplier<List<T>> supplier)
@@ -34,6 +38,8 @@ public class Deck<T extends ICard> implements IDeck<T>
 		}
 
 	/**
+	 * @throws NullArgumentException
+	 * 
 	 * @since 0.1.0
 	 */
 	public Deck(final List<T> cards)

@@ -1,6 +1,5 @@
 package game.card;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,18 +33,9 @@ public interface IDeck<T extends ICard>
 	/**
 	 * @since 0.1.0
 	 */
-	public static IDeck<ICard> get()
+	public static <T extends ICard> IDeck<T> get()
 		{
-		final var cards = new ArrayList<ICard>();
-
-		for (final Rank rank : Rank.values())
-			{
-			for (final Suit suit : Suit.values())
-				{
-				cards.add(new Card(rank, suit));
-				}
-			}
-
-		return new Deck<>(cards);
+		//return (IDeck<T>) new Deck();
+		return new Deck<T>();
 		}
 	}
