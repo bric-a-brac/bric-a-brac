@@ -6,6 +6,8 @@ import java.nio.file.Files;
 import java.nio.file.NotDirectoryException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Comparator;
+import java.util.function.ToIntFunction;
 import java.util.prefs.Preferences;
 import org.apache.commons.lang3.function.FailableBiFunction;
 import org.apache.commons.lang3.function.FailableFunction;
@@ -46,6 +48,32 @@ public class Util
 		return mapper.apply(getPreference(clazz, key));
 		}
 	*/
+
+	/**
+	 * @since 0.1.0
+	 */
+	public static final <T> Comparator<T> intGetterComparator(final ToIntFunction<T> getter)
+		{
+		return (left, right) ->
+			{
+			if (left == null)
+				{
+				if (right == null)
+					{
+					return 0;
+					}
+
+				return 1;
+				}
+
+			if (right == null)
+				{
+				return -1;
+				}
+
+			return Integer.compare(getter.applyAsInt(left), getter.applyAsInt(right));
+			};
+		}
 	}
 
 final class IO

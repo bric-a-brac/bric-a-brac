@@ -10,17 +10,9 @@ import static util.Argument.notNull;
  */
 public class Formatter
 	{
-	public static final Formatter CARDS = new Formatter();
+	public static final Formatter SYMBOLS = new Formatter(ICard.getSymbols());
 
 	private final String[] symbols;
-
-	/**
-	 * @since 0.1.0
-	 */
-	public Formatter()
-		{
-		this(ICard.getCards());
-		}
 
 	/**
 	 * @throws NullArgumentException
@@ -49,6 +41,7 @@ public class Formatter
 	 */
 	public final String format(final ICard card)
 		{
+		// TODO: Pas sur que ça fonctionne juste pr l'instant
 		return symbols[notNull(card).getValue()];
 		}
 	}

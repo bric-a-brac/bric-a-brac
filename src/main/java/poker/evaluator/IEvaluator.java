@@ -10,14 +10,14 @@ import util.exceptions.NullArgumentException;
  * @since 0.1.0
  */
 @FunctionalInterface
-public interface IEvaluator extends Function<List<Card>, Hand>
+public interface IEvaluator extends Function<List<Card>, HandRank>
 	{
 	/**
 	 * @throws NullArgumentException
 	 * 
 	 * @since 0.1.0
 	 */
-	public default Hand evaluate(final List<Card> cards)
+	public default HandRank evaluate(final List<Card> cards)
 		{
 		return apply(cards);
 		}

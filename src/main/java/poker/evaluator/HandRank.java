@@ -13,7 +13,7 @@ import static util.Argument.notNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public final class Hand
+public final class HandRank
 	{
 	private final int rank;
 	private final Type type;
@@ -25,7 +25,7 @@ public final class Hand
 	 * 
 	 * @since 0.1.0
 	 */
-	public Hand(final int rank, final Type type, final int value)
+	public HandRank(final int rank, final Type type, final int value)
 		{
 		super();
 
@@ -46,7 +46,7 @@ public final class Hand
 	 * 
 	 * @since 0.1.0
 	 */
-	public Hand(final int rank, final int type, final int value)
+	public HandRank(final int rank, final int type, final int value)
 		{
 		this(rank, Type.get(type), value);
 		}

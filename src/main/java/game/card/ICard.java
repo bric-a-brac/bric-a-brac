@@ -1,7 +1,7 @@
 package game.card;
 
 import java.util.Comparator;
-import java.util.function.ToIntFunction;
+import util.Util;
 
 /**
  * ICard
@@ -16,6 +16,12 @@ public interface ICard
 	public static final String SUITS = "♠♥♦♣";
 
 	public static final String RANKS = "23456789TJQKA";
+
+	public static final Comparator<ICard> BY_RANK = Util.intGetterComparator(card -> card.getRank().ordinal());
+
+	public static final Comparator<ICard> BY_SUIT = Util.intGetterComparator(card -> card.getSuit().ordinal());
+
+	public static final Comparator<ICard> BY_VALUE = Util.intGetterComparator(ICard::getValue);
 
 	/**
 	 * @since 0.1.0
@@ -35,48 +41,17 @@ public interface ICard
 	/**
 	 * @since 0.1.0
 	 */
-	public static String[] getCards()
+	public static String[] getSymbols()
 		{
 		final var size = CARDS.length() / 2;
 
-		final var cards = new String[size];
+		final var symbols = new String[size];
 
 		for (var i = 0; i < size; i++)
 			{
-			cards[i] = CARDS.substring(i * 2, i * 2 + 2);
+			symbols[i] = CARDS.substring(i * 2, i * 2 + 2);
 			}
 
-		return cards;
+		return symbols;
 		}
-
-	/**
-	 * @since 0.1.0
-	 */
-	// TODO: Dans util
-	public static Comparator<ICard> intComparator(final ToIntFunction<ICard> getter)
-		{
-		return (left, right) ->
-			{
-			if (left == null)
-				{
-				if (right == null)
-					{
-					return 0;
-					}
-
-				return 1;
-				}
-
-			if (right == null)
-				{
-				return -1;
-				}
-
-			return Integer.compare(getter.applyAsInt(left), getter.applyAsInt(right));
-			};
-		}
-
-	//public static final Comparator<ICard> BY_RANK = intComparator(ICard::getRank);
-
-	public static final Comparator<ICard> BY_VALUE = intComparator(ICard::getValue);
 	}

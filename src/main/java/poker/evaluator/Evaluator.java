@@ -76,7 +76,7 @@ public class Evaluator implements IEvaluator
 	 * @since 0.1.0
 	 */
 	@Override
-	public final Hand apply(final List<Card> cards)
+	public final HandRank apply(final List<Card> cards)
 		{
 		notNull(cards);
 
@@ -100,7 +100,7 @@ public class Evaluator implements IEvaluator
 		final var type = position >> 12;
 		//final var value = position;
 
-		return new Hand(rank, type, position);
+		return new HandRank(rank, type, position);
 		}
 
 	/**
