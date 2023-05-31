@@ -22,11 +22,12 @@ public class Emojify implements Function<String, String>
 	/**
 	 * @since 0.1.0
 	 */
+	@SuppressWarnings("unchecked")
 	public Emojify(final String path) throws IOException
 		{
 		super();
 
-		emojis = IO.read(path);
+		emojis = (List<Pair<String, String>>) IO.read(path);
 		}
 
 	/**

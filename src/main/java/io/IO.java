@@ -114,6 +114,36 @@ public class IO
 	 * 
 	 * @since 0.1.0
 	 */
+	//@SuppressWarnings("unchecked")
+	public static final Object read(final File file) throws IOException
+		{
+		return read(file, reader -> reader.readObject());
+
+		/*
+		return (T) read(toFile(path), reader ->
+			{
+			return reader.readObject();
+			});
+		*/
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final Object read(final String path) throws IOException
+		{
+		return read(toFile(path));
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
+	 * @since 0.1.0
+	 */
 	public static final void write(final File file, final IObjectWriter writer) throws IOException
 		{
 		notNull(file);
@@ -137,5 +167,27 @@ public class IO
 	public static final void write(final String path, final IObjectWriter writer) throws IOException
 		{
 		write(toFile(path), writer);
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final <T> void write(final File file, final T data) throws IOException
+		{
+		write(file, writer -> writer.writeObject(data));
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final <T> void write(final String path, final T data) throws IOException
+		{
+		write(toFile(path), data);
 		}
 	}

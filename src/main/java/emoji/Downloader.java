@@ -32,13 +32,6 @@ public final class Downloader
 
 		final var emojis = parse(document);
 
-		/*
-		emojis.forEach(emoji ->
-			{
-			System.out.println(emoji.getValue());
-			});
-		*/
-
 		IO.write("emojis.dat", emojis);
 		}
 
