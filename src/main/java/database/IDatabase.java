@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import org.apache.commons.lang3.function.FailableFunction;
@@ -8,7 +9,7 @@ import org.apache.commons.lang3.function.FailableFunction;
  * @version 0.1.0
  * @since 0.1.0
  */
-public interface IDatabase extends AutoCloseable
+public interface IDatabase<T extends Connection> extends AutoCloseable
 	{
 	/**
 	 * @since 0.1.0
@@ -45,6 +46,11 @@ public interface IDatabase extends AutoCloseable
 
 		return null;
 		};
+
+	/**
+	 * @since 0.1.0
+	 */
+	public T getConnection();
 
 	/**
 	 * @since 0.1.0

@@ -11,9 +11,9 @@ import static util.Argument.notNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class Database implements IDatabase
+public class Database<T extends Connection> implements IDatabase<T>
 	{
-	protected final Connection connection;
+	protected final T connection;
 
 	/**
 	 * @throws NullArgumentException
@@ -21,9 +21,10 @@ public class Database implements IDatabase
 	 * 
 	 * @since 0.1.0
 	 */
+	@SuppressWarnings("unchecked")
 	public Database(final String connectionString) throws SQLException
 		{
-		this(DriverManager.getConnection(notNull(connectionString)));
+		this((T) DriverManager.getConnection(notNull(connectionString)));
 		}
 
 	/**
@@ -32,11 +33,20 @@ public class Database implements IDatabase
 	 * 
 	 * @since 0.1.0
 	 */
-	protected Database(final Connection connection)
+	protected Database(final T connection)
 		{
 		super();
 
 		this.connection = notNull(connection);
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	@Override
+	public final T getConnection()
+		{
+		return connection;
 		}
 
 	/**

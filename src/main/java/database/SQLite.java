@@ -11,7 +11,7 @@ import static util.Argument.notNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class SQLite extends Database
+public class SQLite extends Database<SQLiteConnection>
 	{
 	private static final String CONNECTION_STRING = "jdbc:sqlite:%s";
 
@@ -36,14 +36,5 @@ public class SQLite extends Database
 	public SQLite(final Path path) throws SQLException
 		{
 		super(String.format(CONNECTION_STRING, notNull(path)));
-		}
-
-	/**
-	 * @since 0.1.0
-	 */
-	// TODO: A tester !!!!!!!!!!
-	public final SQLiteConnection getConnection()
-		{
-		return (SQLiteConnection) connection;
 		}
 	}
