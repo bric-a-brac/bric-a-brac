@@ -20,6 +20,9 @@ public class Emojify implements Function<String, String>
 	protected final List<Pair<String, String>> emojis;
 
 	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
 	 * @since 0.1.0
 	 */
 	@SuppressWarnings("unchecked")
@@ -31,6 +34,9 @@ public class Emojify implements Function<String, String>
 		}
 
 	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
 	 * @since 0.1.0
 	 */
 	public Emojify(final String path, final String todoSeparator) throws IOException
@@ -55,6 +61,12 @@ public class Emojify implements Function<String, String>
 		{
 		var textWithEmojis = notNull(text);
 
+		for (final var emoji : emojis)
+			{
+			textWithEmojis = textWithEmojis.replace(emoji.getKey(), emoji.getValue());
+			}
+
+		/*
 		final var iterator = emojis.iterator();
 
 		while (iterator.hasNext())
@@ -63,6 +75,7 @@ public class Emojify implements Function<String, String>
 
 			textWithEmojis = textWithEmojis.replace(emoji.getKey(), emoji.getValue());
 			}
+		*/
 
 		return textWithEmojis;
 		}
