@@ -1,8 +1,6 @@
 package dictionary.dicollecte;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.function.Function;
 
 /**
  * @version 0.1.0
@@ -20,21 +18,14 @@ public final class Dicollecte
 
 	public static void words() throws IOException
 		{
-		final var path = "/home/thefab/Téléchargements/softmaker-hunspell-french-modern-101/fr-moderne.dic";
+		final var dictionary = new Dictionary();
 
-		final Function<String, Word> mapper = line ->
-			{
-			final var tokens = line.split("[/\\t]");
+		System.out.println(dictionary.getWord(null));
+		System.out.println(dictionary.getWord("éléphant"));
+		System.out.println(dictionary.getWord("maison"));
 
-			final var list = Arrays.asList(tokens);
-
-			//final var word = list.remove(0);
-			//final var numbers = list;
-
-			return new Word(list.get(0), list.subList(1, list.size()));
-			};
-
-		final var words = Parser.parse(path, mapper);
+		/*
+		final var numbers = new HashSet<Integer>();
 
 		words.forEach((key, word) ->
 			{
@@ -45,13 +36,17 @@ public final class Dicollecte
 				//System.out.println(word + " -> " + word.getNumbers());
 				}
 
-			if (n == 2)
+			if (n > 1)
 				{
-				System.out.println(word + " -> " + word.getNumbers());
+				//System.out.println(word + " -> " + word.getNumbers());
+				numbers.add(word.getNumbers().get(1));
 				}
 
 			//System.out.println(word + " -> " + word.getNumbers());
 			});
+
+		numbers.stream().sorted().forEach(number -> System.out.println(number));
+		*/
 		}
 
 	public static void main(String[] args) throws Throwable
