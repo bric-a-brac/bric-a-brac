@@ -3,7 +3,7 @@ package net;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
-import org.apache.commons.lang3.NotImplementedException;
+import org.jsoup.nodes.Document;
 
 /**
  * @version 0.1.0
@@ -13,15 +13,20 @@ public class SimpleClient extends Client
 	{
 	// TODO: User-Agent
 
-	@Override
-	public String get(final URI uri) throws IOException
-		{
-		throw new NotImplementedException();
-		}
-
+	/**
+	 * @since 0.1.0
+	 */
 	public BufferedImage getAsImage(final URI uri) throws IOException
 		{
-		return get(uri, IContentHandler.IMAGE);
+		return get(uri, IMAGE);
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	public Document getAsDocument(final URI uri) throws IOException
+		{
+		return get(uri, HTML);
 		}
 
 	/*

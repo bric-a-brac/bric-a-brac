@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
-import java.net.http.HttpResponse.BodyHandlers;
+import java.net.http.HttpResponse.BodyHandler;
+import org.apache.commons.lang3.NotImplementedException;
 import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
@@ -34,39 +35,67 @@ public class Client implements IClient, IDownloader<Void>
 		{
 		super();
 
+		// HttpClient.newBuilder().connectTimeout(null).followRedirects(Redirect.ALWAYS).build();
 		this.client = notNull(client);
 		}
 
-	// HttpClient client = HttpClient.newHttpClient();
-	// HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://foo.com/")).build();
-	// client.sendAsync(request, BodyHandlers.ofString()).thenApply(HttpResponse::body).thenAccept(System.out::println).join();
+	@Override
+	public final String getUserAgent()
+		{
+		return null;
+		}
 
-	// HttpClient.newBuilder().connectTimeout(null).followRedirects(Redirect.ALWAYS).build();
+	@Override
+	public void download(String url) throws IOException
+		{
+		throw new NotImplementedException();
+		}
+
+	@Override
+	public void download(URI uri) throws IOException
+		{
+		throw new NotImplementedException();
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
+	 * @since 0.1.0
+	 */
+	@Override
+	public <T> T get(final URI uri, final BodyHandler<T> handler) throws IOException
+		{
+		return execute(getRequest(uri), handler);
+		}
 
 	/**
 	 * @throws NullArgumentException
 	 * 
 	 * @since 0.1.0
 	 */
-	@Override
-	public String get(final URI uri) throws IOException
+	protected HttpRequest getRequest(final URI uri)
 		{
-		final var request = HttpRequest.newBuilder().GET().uri(notNull(uri)).build();
+		notNull(uri);
 
-		try
-			{
-			return client.send(request, BodyHandlers.ofString()).body();
-			}
-		catch (final InterruptedException ex)
-			{
-			throw new IOException(ex);
-			}
+		//var sdsd = HttpRequest.newBuilder().GET().uri(uri);
+		//sdsd.header("sdsds", null);
+
+		return HttpRequest.newBuilder().GET().uri(uri).build();
 		}
 
-	@Override
-	public <T> T get(final URI uri, final IContentHandler<T> handler) throws IOException
+	/**
+	 * Exécute une requête HTTP.
+	 * 
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
+	 * @since 0.1.0
+	 */
+	protected <T> T execute(final HttpRequest request, final BodyHandler<T> handler) throws IOException
 		{
-		final var request = HttpRequest.newBuilder().GET().uri(notNull(uri)).build();
+		notNull(request);
+		notNull(handler);
 
 		try
 			{
@@ -74,6 +103,7 @@ public class Client implements IClient, IDownloader<Void>
 			}
 		catch (final InterruptedException ex)
 			{
+			// TODO: Autre erreur ???
 			throw new IOException(ex);
 			}
 		}
