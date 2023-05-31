@@ -12,6 +12,7 @@ import util.Constant;
 import util.LittleEndian;
 import util.exceptions.NullArgumentException;
 
+import static io.IO.toPath;
 import static util.Argument.notNull;
 
 /**
@@ -42,7 +43,7 @@ public class Evaluator implements IEvaluator
 	 */
 	public Evaluator(final String path) throws IOException
 		{
-		this(Paths.get(notNull(path)));
+		this(toPath(path));
 		}
 
 	/**
@@ -53,7 +54,7 @@ public class Evaluator implements IEvaluator
 	 */
 	public Evaluator(final File file) throws IOException
 		{
-		this(notNull(file).toPath());
+		this(toPath(file));
 		}
 
 	/**
@@ -84,6 +85,7 @@ public class Evaluator implements IEvaluator
 
 		var position = 53;
 
+		// TODO: Trier cartes ??
 		//cards.sort(new poker.Card.Comparator());
 
 		for (final Card card : cards)

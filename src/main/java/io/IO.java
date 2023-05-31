@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 import org.apache.commons.lang3.function.FailableFunction;
 import util.Constant;
@@ -30,7 +31,8 @@ public class IO
 	 */
 	public static final FailableFunction<Path, File, IOException> PATH_TO_FILE = IO::toFile;
 
-	//public static final FailableFunction<Path, Path, IOException> REAL = path -> notNull(path).toAbsolutePath().normalize().toRealPath();
+	public static final FailableFunction<Path, Path, IOException> REAL = path -> notNull(path).toAbsolutePath().normalize().toRealPath();
+
 	//public static final FailableFunction<Path, File, RuntimeException> PATH_TO_FsddILE = STRING_TO_FILE.andThen(null);
 
 	/**
@@ -68,6 +70,27 @@ public class IO
 	public static final File toFile(final Path path)
 		{
 		return notNull(path).toFile();
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final Path toPath(final String path)
+		{
+		// TODO: Ou Path.of() ???
+		return Paths.get(notNull(path));
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final Path toPath(final File file)
+		{
+		return notNull(file).toPath();
 		}
 
 	/**

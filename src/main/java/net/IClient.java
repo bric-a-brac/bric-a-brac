@@ -84,4 +84,7 @@ public interface IClient
 	 * @since 0.1.0
 	 */
 	public <T> T get(URI uri, BodyHandler<T> handler) throws IOException;
+
+	// DEV
+	public <T> T send(ISender<T> sender) throws IOException;
 	}

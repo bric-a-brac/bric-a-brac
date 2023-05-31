@@ -18,6 +18,8 @@ public class Client implements IClient, IDownloader<Void>
 	{
 	protected final HttpClient client;
 
+	protected final String userAgent;
+
 	/**
 	 * @since 0.1.0
 	 */
@@ -36,13 +38,17 @@ public class Client implements IClient, IDownloader<Void>
 		super();
 
 		// HttpClient.newBuilder().connectTimeout(null).followRedirects(Redirect.ALWAYS).build();
+
 		this.client = notNull(client);
+
+		// TODO: User-Agent
+		userAgent = null;
 		}
 
 	@Override
 	public final String getUserAgent()
 		{
-		return null;
+		return userAgent;
 		}
 
 	@Override
@@ -67,6 +73,14 @@ public class Client implements IClient, IDownloader<Void>
 	public <T> T get(final URI uri, final BodyHandler<T> handler) throws IOException
 		{
 		return execute(getRequest(uri), handler);
+		}
+
+	// DEV
+	@Override
+	public <T> T send(final ISender<T> sender) throws IOException
+		{
+		//client.send(null, null)
+		throw new NotImplementedException();
 		}
 
 	/**

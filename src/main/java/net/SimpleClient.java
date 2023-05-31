@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import org.jsoup.nodes.Document;
+import util.exceptions.NullArgumentException;
 
 /**
  * @version 0.1.0
@@ -11,9 +12,10 @@ import org.jsoup.nodes.Document;
  */
 public class SimpleClient extends Client
 	{
-	// TODO: User-Agent
-
 	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
 	 * @since 0.1.0
 	 */
 	public BufferedImage getAsImage(final URI uri) throws IOException
@@ -22,6 +24,9 @@ public class SimpleClient extends Client
 		}
 
 	/**
+	 * @throws NullArgumentException
+	 * @throws IOException
+	 * 
 	 * @since 0.1.0
 	 */
 	public Document getAsDocument(final URI uri) throws IOException
