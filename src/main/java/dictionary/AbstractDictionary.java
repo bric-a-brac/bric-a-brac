@@ -2,6 +2,7 @@ package dictionary;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.Optional;
 import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
@@ -33,5 +34,16 @@ public abstract class AbstractDictionary<T extends IWord> implements IDictionary
 	public final Map<String, T> getWords()
 		{
 		return Collections.unmodifiableMap(words);
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	@Override
+	public final Optional<T> getWord(final String word)
+		{
+		return Optional.ofNullable(words.get(notNull(word)));
 		}
 	}
