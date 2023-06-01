@@ -32,7 +32,7 @@ public class DeckTest extends Assertions
 	@Test
 	public void testGetDeck()
 		{
-		final var deck = IDeck.get();
+		final var deck = Deck.get();
 
 		assertNotNull(deck);
 
@@ -42,7 +42,7 @@ public class DeckTest extends Assertions
 	@Test
 	public void testDeal()
 		{
-		final var deck = IDeck.get();
+		final var deck = Deck.get();
 
 		assertEquals(52, deck.getCards().size());
 

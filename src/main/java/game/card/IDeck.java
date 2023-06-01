@@ -29,13 +29,4 @@ public interface IDeck<T extends ICard>
 	 * @since 0.1.0
 	 */
 	public void shuffle();
-
-	/**
-	 * @since 0.1.0
-	 */
-	public static <T extends ICard> IDeck<T> get()
-		{
-		//return (IDeck<T>) new Deck();
-		return new Deck<T>();
-		}
 	}

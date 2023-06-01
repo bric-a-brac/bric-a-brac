@@ -20,14 +20,6 @@ public class Deck<T extends ICard> implements IDeck<T>
 	protected final List<T> cards;
 
 	/**
-	 * @since 0.1.0
-	 */
-	public Deck()
-		{
-		this(ICard.get());
-		}
-
-	/**
 	 * @throws NullArgumentException
 	 * 
 	 * @since 0.1.0
@@ -103,5 +95,13 @@ public class Deck<T extends ICard> implements IDeck<T>
 		//RandomGeneratorFactory.all().forEach(sdd -> System.out.println(sdd.name()));
 		//RandomGeneratorFactory.getDefault().create();
 		throw new NotImplementedException();
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	public static final Deck<Card> get()
+		{
+		return new Deck<>(Card.get());
 		}
 	}

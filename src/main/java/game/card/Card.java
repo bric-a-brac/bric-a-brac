@@ -1,5 +1,7 @@
 package game.card;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.commons.lang3.NotImplementedException;
 import util.exceptions.NullArgumentException;
 
@@ -76,5 +78,23 @@ public class Card implements ICard
 	public String toString()
 		{
 		return String.format(FORMAT, getClass().getSimpleName(), getRank().toString(), getSuit().toString());
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	public static final List<Card> get()
+		{
+		final var cards = new ArrayList<Card>();
+
+		for (final Rank rank : Rank.values())
+			{
+			for (final Suit suit : Suit.values())
+				{
+				cards.add(new Card(rank, suit));
+				}
+			}
+
+		return cards;
 		}
 	}
