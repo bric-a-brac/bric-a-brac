@@ -2,6 +2,7 @@ package poker.evaluator;
 
 import java.util.List;
 import java.util.function.Function;
+import org.apache.commons.lang3.NotImplementedException;
 import game.card.Card;
 import util.exceptions.NullArgumentException;
 
@@ -22,11 +23,24 @@ public interface IEvaluator extends Function<List<Card>, HandRank>
 		return apply(cards);
 		}
 
-	// TODO: Parse string
-	/*
-	public default String evaluate(final String cards)
+	/**
+	 * @throws NotImplementedException
+	 * 
+	 * @since 0.1.0
+	 */
+	public default HandRank evaluate(final int[] cards)
 		{
 		throw new NotImplementedException();
 		}
-	*/
+
+	/**
+	 * @throws NotImplementedException
+	 * 
+	 * @since 0.1.0
+	 */
+	public default String evaluate(final String cards)
+		{
+		// TODO: Parse string
+		throw new NotImplementedException();
+		}
 	}

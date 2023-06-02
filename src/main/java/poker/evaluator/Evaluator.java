@@ -108,7 +108,7 @@ public class Evaluator implements IEvaluator
 	/**
 	 * @since 0.1.0
 	 */
-	private final int getNewPosition(final int position)
+	public final int getNewPosition(final int position)
 		{
 		return ranks.getInt(position * 4);
 		}

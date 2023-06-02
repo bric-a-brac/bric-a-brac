@@ -10,19 +10,36 @@ public class Dev
 			{
 			database.getConnection().createStatement().execute("CREATE TABLE t (INT f)");
 
-			final var s = database.getConnection().prepareStatement("INSERT INTO t VALUES (?)");
+			final var statement = database.getConnection().prepareStatement("INSERT INTO t VALUES (?)");
 
-			s.setInt(1, 4);
-			s.execute();
+			final var action = database.update().andThen(database.lastInsertID());
 
-			var id = IDatabase.LAST_INSERT_ID.apply(s);
-			System.out.println(id);
+			statement.setInt(1, 3434);
+
+			final var id = action.apply(statement);
+
+			id.ifPresent(System.out::println);
+
+			/*
+			database.transaction(() ->
+				{
+				for (var i = 0; i < 1000; i++)
+					{
+					statement.setInt(1, i);
+
+					final var id = action.apply(statement);
+
+					id.ifPresent(System.out::println);
+					}
+
+				return null;
+				});
+			*/
 			}
 		}
 
 	public static void main(String[] args) throws Throwable
 		{
 		sqlite();
-		//System.out.println(Integer.valueOf(null));
 		}
 	}

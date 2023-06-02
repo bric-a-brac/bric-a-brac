@@ -23,7 +23,8 @@ public interface IFormatter
 		/**
 		 * @since 0.1.0
 		 */
-		private final String[] suits = new String[] {"c", "d", "h", "s"};
+		private final String[] suits = new String[] {"C", "D", "H", "S"};
+		//private final String[] suits = new String[] {"c", "d", "h", "s"};
 		//public static final String[] SUITS = new String[] {"♣", "♦", "♥", "♠"};
 
 		/**

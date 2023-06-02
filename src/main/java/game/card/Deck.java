@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
-import org.apache.commons.lang3.NotImplementedException;
-//import org.apache.commons.math3.random.MersenneTwister;
+import org.apache.commons.math3.random.MersenneTwister;
 import game.card.exceptions.NoMoreCardException;
 import util.exceptions.NullArgumentException;
 
@@ -88,13 +87,26 @@ public class Deck<T extends ICard> implements IDeck<T>
 		return cards;
 		}
 
+	/**
+	 * @since 0.1.0
+	 */
 	@Override
 	public void shuffle()
 		{
-		//MersenneTwister.
-		//RandomGeneratorFactory.all().forEach(sdd -> System.out.println(sdd.name()));
-		//RandomGeneratorFactory.getDefault().create();
-		throw new NotImplementedException();
+		final var random = new MersenneTwister();
+
+		for (var i = cards.size() - 1; i > 0; i--)
+			{
+			final var index = random.nextInt(i + 1);
+
+			//Collections.swap(cards, 0, 0);
+
+			final var card = cards.get(index);
+
+			cards.set(index, cards.get(i));
+
+			cards.set(i, card);
+			}
 		}
 
 	/**
