@@ -30,7 +30,13 @@ public class Emojify implements Function<String, String>
 		{
 		super();
 
+		//final var d = new ObjectReader<ArrayList<Pair<String, String>>>(new ArrayList<Pair<String, String>>().getClass());
+		//final var pair = TypeToken.getParameterized(Pair.class, String.class, String.class);
+		//final var list = TypeToken.getParameterized(List.class, pair.getType());
+		//emojis = IO.read(path, IObjectReader.of(new ArrayList<Pair<String, String>>().getClass()));
+
 		emojis = (List<Pair<String, String>>) IO.read(path);
+		//emojis = IO.read(path, IObjectReader.of(list.getRawType()));
 		}
 
 	/**

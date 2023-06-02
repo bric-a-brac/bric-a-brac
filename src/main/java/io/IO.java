@@ -131,31 +131,11 @@ public class IO
 		return read(toFile(path), reader);
 		}
 
-	/**
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
-	//@SuppressWarnings("unchecked")
 	public static final Object read(final File file) throws IOException
 		{
 		return read(file, reader -> reader.readObject());
-
-		/*
-		return (T) read(toFile(path), reader ->
-			{
-			return reader.readObject();
-			});
-		*/
 		}
 
-	/**
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
 	public static final Object read(final String path) throws IOException
 		{
 		return read(toFile(path));

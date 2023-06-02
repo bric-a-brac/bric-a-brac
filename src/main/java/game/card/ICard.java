@@ -1,6 +1,8 @@
 package game.card;
 
 import java.util.Comparator;
+import java.util.function.Function;
+
 import util.Util;
 
 /**
@@ -25,6 +27,15 @@ public interface ICard extends Comparable<ICard>
 	 * @since 0.1.0
 	 */
 	public static final Comparator<ICard> BY_VALUE = Util.intGetterComparator(ICard::getValue);
+
+	public static final Function<ICard, Integer> CARD_TO_VALUE = ICard::getValue;
+
+	/*
+	public static final IStringParser<List<Card>, IllegalArgumentException> PARSER = value ->
+		{
+		return null;
+		};
+	*/
 
 	/**
 	 * @since 0.1.0

@@ -8,6 +8,7 @@ public class Constant
 	{
 	public static final String BRIC_A_BRAC_USER_AGENT = "";
 
+	public static final String EMPTY = "";
 	public static final String COLON = ":";
 	public static final String COMMA = ",";
 	public static final String DOT = ".";

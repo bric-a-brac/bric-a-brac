@@ -67,9 +67,16 @@ public class Dev
 			}
 		}
 
+	public static void parse()
+		{
+		new Parser().parse("ASAHKC");
+		}
+
 	public static void main(String[] args) throws Throwable
 		{
-		deal();
-		shuffle();
+		//deal();
+		//shuffle();
+
+		parse();
 		}
 	}

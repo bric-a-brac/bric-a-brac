@@ -3,6 +3,9 @@ package game.card;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.NotImplementedException;
+
+import parser.IStringParser;
+import parser.exceptions.ParseException;
 import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
@@ -96,5 +99,33 @@ public class Card implements ICard
 			}
 
 		return cards;
+		}
+
+	/**
+	 * @version 0.1.0
+	 * @since 0.1.0
+	 */
+	public static final class Parser implements IStringParser<List<Card>, ParseException>
+		{
+		private static final List<Card> CARDS = Card.get();
+
+		/**
+		 * @throws NullArgumentException
+		 * @throws ParseException
+		 * 
+		 * @since 0.1.0
+		 */
+		@Override
+		public List<Card> apply(final String input) //throws ParseException
+			{
+			notNull(input);
+
+			throw new ParseException("Invalid card");
+			}
+
+		public static Card parseCard()
+			{
+			throw new NotImplementedException();
+			}
 		}
 	}

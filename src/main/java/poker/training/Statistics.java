@@ -2,6 +2,7 @@ package poker.training;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import game.card.Card;
@@ -43,10 +44,52 @@ public class Statistics
 			});
 		}
 
+	public static void all()
+		{
+		final var tokens = new String[] {"Hello", "wonderful", "giant", "world", "leader", "!!!"};
+
+		var count = 3;
+
+		final var combiner = new Combiner<String>(count, tokens);
+
+		var result = new String[count];
+
+		while (combiner.test(result))
+			{
+			System.out.println(Arrays.toString(result));
+			}
+		}
+
+	public static void hands()
+		{
+		final var cards = Card.get().toArray(new Card[0]);
+		//final var cards = Card.get().stream().map(IFormatter.DEFAULT::toString).collect(Collectors.toList()).toArray(new String[0]);
+
+		final var count = 5;
+
+		final var combiner = new Combiner<Card>(count, cards);
+
+		var result = new Card[count];
+
+		var n = 0;
+
+		while (combiner.test(result))
+			{
+			//System.out.println(Arrays.toString(result));
+			n++;
+			}
+
+		System.out.println("Nombre de combinaisons de 5 cartes: " + n);
+		//                                     2598960
+		// Nombre de combinaisons de 5 cartes: 2598960
+		}
+
 	public static void main(String[] args) throws Throwable
 		{
 		// Flop 5, Turn 6, River 7
+		//board(7, 10000000);
 
-		board(7, 10000000);
+		//all();
+		hands();
 		}
 	}
