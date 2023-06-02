@@ -2,8 +2,8 @@ package parser;
 
 import java.time.LocalDate;
 import java.util.regex.Pattern;
+import org.apache.commons.math3.exception.NullArgumentException;
 import parser.exceptions.InvalidDateException;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

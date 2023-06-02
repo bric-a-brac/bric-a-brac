@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.commons.math3.exception.NullArgumentException;
 import io.IO;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

@@ -10,8 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import org.apache.commons.lang3.function.FailableFunction;
+import org.apache.commons.math3.exception.NullArgumentException;
 import util.Constant;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

@@ -2,8 +2,8 @@ package database;
 
 import java.nio.file.Path;
 import java.sql.SQLException;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.sqlite.SQLiteConnection;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

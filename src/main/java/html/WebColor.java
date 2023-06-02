@@ -1,9 +1,9 @@
 package html;
 
 import java.awt.Color;
+import org.apache.commons.math3.exception.NullArgumentException;
 import image.Pixel;
 import util.Constant;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

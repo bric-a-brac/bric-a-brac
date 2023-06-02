@@ -5,8 +5,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 import static util.Argument.notNull;
 

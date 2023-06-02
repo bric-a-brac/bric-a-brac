@@ -3,10 +3,9 @@ package game.card;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.NotImplementedException;
-
+import annotations.WorkInProgress;
 import parser.IStringParser;
 import parser.exceptions.ParseException;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 
@@ -105,8 +104,10 @@ public class Card implements ICard
 	 * @version 0.1.0
 	 * @since 0.1.0
 	 */
+	@WorkInProgress
 	public static final class Parser implements IStringParser<List<Card>, ParseException>
 		{
+		@SuppressWarnings("unused")
 		private static final List<Card> CARDS = Card.get();
 
 		/**

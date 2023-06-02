@@ -1,6 +1,7 @@
 package util;
 
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NotStrictlyPositiveException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 /**
  * @version 0.1.0
@@ -21,5 +22,18 @@ public class Argument
 			}
 
 		return value;
+		}
+
+	/**
+	 * @throws NotStrictlyPositiveException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static void strictlyPositive(final int value)
+		{
+		if (value <= 0)
+			{
+			throw new NotStrictlyPositiveException(Integer.valueOf(value));
+			}
 		}
 	}

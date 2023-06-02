@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 import static util.Argument.notNull;
 

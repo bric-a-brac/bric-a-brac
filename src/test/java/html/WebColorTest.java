@@ -1,10 +1,10 @@
 package html;
 
 import java.awt.Color;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import image.Pixel;
-import util.exceptions.NullArgumentException;
 
 public class WebColorTest extends Assertions
 	{

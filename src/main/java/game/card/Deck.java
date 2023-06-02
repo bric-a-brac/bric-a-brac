@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
+import org.apache.commons.math3.exception.NotStrictlyPositiveException;
 import org.apache.commons.math3.random.MersenneTwister;
+import org.apache.commons.math3.random.RandomGenerator;
 import game.card.exceptions.NoMoreCardException;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
+import static util.Argument.strictlyPositive;
 
 /**
  * @version 0.1.0
@@ -16,6 +18,8 @@ import static util.Argument.notNull;
  */
 public class Deck<T extends ICard> implements IDeck<T>
 	{
+	private static final RandomGenerator RANDOM = new MersenneTwister();
+
 	protected final List<T> cards;
 
 	/**
@@ -57,7 +61,7 @@ public class Deck<T extends ICard> implements IDeck<T>
 	 * @since 0.1.0
 	 */
 	@Override
-	public T deal()
+	public final T deal()
 		{
 		if (cards.isEmpty())
 			{
@@ -68,14 +72,15 @@ public class Deck<T extends ICard> implements IDeck<T>
 		}
 
 	/**
+	 * @throws NotStrictlyPositiveException
 	 * @throws NoMoreCardException
 	 * 
 	 * @since 0.1.0
 	 */
 	@Override
-	public List<T> deal(int count)
+	public final List<T> deal(int count)
 		{
-		// TODO: count > 0
+		strictlyPositive(count);
 
 		final var cards = new ArrayList<T>();
 
@@ -93,16 +98,9 @@ public class Deck<T extends ICard> implements IDeck<T>
 	@Override
 	public void shuffle()
 		{
-		final var random = new MersenneTwister();
-
 		for (var i = cards.size() - 1; i > 0; i--)
 			{
-			//final var index = random.nextInt(i + 1);
-			//final var card = cards.get(index);
-			//cards.set(index, cards.get(i));
-			//cards.set(i, card);
-
-			Collections.swap(cards, i, random.nextInt(i + 1));
+			Collections.swap(cards, i, RANDOM.nextInt(i + 1));
 			}
 		}
 

@@ -1,6 +1,6 @@
 package game.card;
 
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 import static util.Argument.notNull;
 

@@ -3,8 +3,8 @@ package parser;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
+import org.apache.commons.math3.exception.NullArgumentException;
 import util.Constant;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

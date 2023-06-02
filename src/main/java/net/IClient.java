@@ -7,9 +7,9 @@ import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.net.http.HttpResponse.BodySubscribers;
 import java.nio.charset.StandardCharsets;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

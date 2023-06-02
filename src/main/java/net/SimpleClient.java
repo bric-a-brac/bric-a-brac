@@ -3,8 +3,8 @@ package net;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.jsoup.nodes.Document;
-import util.exceptions.NullArgumentException;
 
 /**
  * @version 0.1.0

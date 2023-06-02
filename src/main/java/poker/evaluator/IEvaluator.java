@@ -3,8 +3,8 @@ package poker.evaluator;
 import java.util.List;
 import java.util.function.Function;
 import org.apache.commons.lang3.NotImplementedException;
+import org.apache.commons.math3.exception.NullArgumentException;
 import game.card.Card;
-import util.exceptions.NullArgumentException;
 
 /**
  * @version 0.1.0

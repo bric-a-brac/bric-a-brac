@@ -1,8 +1,8 @@
 package util;
 
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import util.exceptions.NullArgumentException;
 
 public class ReflectionHelperTest extends Assertions
 	{

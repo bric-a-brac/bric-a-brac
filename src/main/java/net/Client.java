@@ -6,7 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandler;
 import org.apache.commons.lang3.NotImplementedException;
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 import static util.Argument.notNull;
 

@@ -1,7 +1,7 @@
 package html;
 
 import parser.IParser;
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 

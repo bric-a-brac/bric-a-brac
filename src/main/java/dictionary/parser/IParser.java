@@ -7,8 +7,8 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import org.apache.commons.math3.exception.NullArgumentException;
 import dictionary.IWord;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

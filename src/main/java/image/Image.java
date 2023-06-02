@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import javax.imageio.ImageIO;
+import org.apache.commons.math3.exception.NullArgumentException;
 import image.exceptions.InvalidImageException;
 import image.exceptions.InvalidImageSizeException;
-import util.exceptions.NullArgumentException;
 
 import static io.IO.toFile;
 import static util.Argument.notNull;

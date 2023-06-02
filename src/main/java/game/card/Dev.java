@@ -69,7 +69,7 @@ public class Dev
 
 	public static void parse()
 		{
-		new Parser().parse("ASAHKC");
+		//new Parser().parse("ASAHKC");
 		}
 
 	public static void main(String[] args) throws Throwable

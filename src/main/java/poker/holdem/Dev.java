@@ -1,6 +1,5 @@
 package poker.holdem;
 
-import game.card.Card;
 import game.card.Deck;
 import poker.Player;
 
@@ -17,7 +16,7 @@ public class Dev
 		player.getHand().getCards().add(deck.deal());
 		player.getHand().getCards().add(deck.deal());
 
-		player.setHand(null);
+		//player.setHand(null);
 
 		final var board = new Board();
 

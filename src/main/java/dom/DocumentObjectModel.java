@@ -7,12 +7,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.lang3.function.FailableSupplier;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import dom.exceptions.DocumentObjectModelParserException;
-//import parser.IParser;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

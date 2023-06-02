@@ -3,7 +3,7 @@ package io;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import org.apache.commons.lang3.NotImplementedException;
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 import static util.Argument.notNull;
 

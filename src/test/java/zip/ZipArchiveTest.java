@@ -6,9 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.zip.ZipException;
+import org.apache.commons.math3.exception.NullArgumentException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import util.exceptions.NullArgumentException;
 
 public class ZipArchiveTest extends Assertions
 	{

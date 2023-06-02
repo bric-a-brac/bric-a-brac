@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Point;
 import java.util.function.IntFunction;
 import org.apache.commons.lang3.NotImplementedException;
-import util.exceptions.NullArgumentException;
+import org.apache.commons.math3.exception.NullArgumentException;
 
 import static util.Argument.notNull;
 

@@ -1,7 +1,7 @@
 package poker.evaluator;
 
+import org.apache.commons.math3.exception.NullArgumentException;
 import poker.evaluator.exceptions.InvalidHandException;
-import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

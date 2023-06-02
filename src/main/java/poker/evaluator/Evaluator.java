@@ -6,11 +6,11 @@ import java.nio.ByteBuffer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import org.apache.commons.math3.exception.NullArgumentException;
 import game.card.Card;
 import poker.evaluator.exceptions.InvalidHandException;
 import util.Constant;
 import util.LittleEndian;
-import util.exceptions.NullArgumentException;
 
 import static io.IO.toPath;
 import static util.Argument.notNull;

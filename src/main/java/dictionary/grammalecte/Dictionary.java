@@ -2,10 +2,10 @@ package dictionary.grammalecte;
 
 import java.io.IOException;
 import java.util.Map;
+import org.apache.commons.math3.exception.NullArgumentException;
 import dictionary.AbstractDictionary;
 import dictionary.parser.IParser;
 import util.Constant;
-import util.exceptions.NullArgumentException;
 
 import static io.IO.toPath;
 import static util.Argument.notNull;
