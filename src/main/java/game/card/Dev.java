@@ -55,7 +55,7 @@ public class Dev
 		{
 		//final var deck = Deck.get();
 
-		for (var i = 0; i < 5; i++)
+		for (var i = 0; i < 50; i++)
 			{
 			final var deck = Deck.get();
 
@@ -63,12 +63,13 @@ public class Dev
 
 			final var cards = deck.getCards().stream().map(IFormatter.DEFAULT::toString).collect(Collectors.toList());
 
-			System.out.println(cards);
+			System.out.println(String.join("", cards));
 			}
 		}
 
 	public static void main(String[] args) throws Throwable
 		{
 		deal();
+		shuffle();
 		}
 	}

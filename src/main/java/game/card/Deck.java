@@ -97,15 +97,12 @@ public class Deck<T extends ICard> implements IDeck<T>
 
 		for (var i = cards.size() - 1; i > 0; i--)
 			{
-			final var index = random.nextInt(i + 1);
+			//final var index = random.nextInt(i + 1);
+			//final var card = cards.get(index);
+			//cards.set(index, cards.get(i));
+			//cards.set(i, card);
 
-			//Collections.swap(cards, 0, 0);
-
-			final var card = cards.get(index);
-
-			cards.set(index, cards.get(i));
-
-			cards.set(i, card);
+			Collections.swap(cards, i, random.nextInt(i + 1));
 			}
 		}
 
