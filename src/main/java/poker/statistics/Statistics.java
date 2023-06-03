@@ -26,19 +26,8 @@ public final class Statistics
 	 */
 	public static final class Builder
 		{
+		//Provider
 		}
-
-	/*
-	public static void name()
-		{
-		StatisticsMath3.getStatistics().forEach((type, count) ->
-			{
-			System.out.println(type.toString() + ": " + count.toString());
-			});
-		}
-	*/
-
-	
 
 	/*
 	@Deprecated

@@ -1,6 +1,5 @@
 package poker.statistics;
 
-import java.util.concurrent.atomic.AtomicLong;
 import annotations.WorkInProgress;
 
 /**
@@ -16,6 +15,9 @@ final class StatisticsHlbnet
 	{
 	public static long combinations(final int n)
 		{
+		return new CardCombiner(n).count();
+
+		/*
 		final var combiner = new CardCombiner(n);
 
 		final var count = new AtomicLong(0L);
@@ -26,6 +28,7 @@ final class StatisticsHlbnet
 			});
 
 		return count.get();
+		*/
 		}
 
 	//final var cards = Card.get().stream().map(IFormatter.DEFAULT::toString).collect(Collectors.toList()).toArray(new String[0]);

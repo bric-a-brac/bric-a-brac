@@ -1,5 +1,6 @@
 package poker.statistics;
 
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
 import org.apache.commons.math3.exception.NullArgumentException;
 import annotations.WorkInProgress;
@@ -27,6 +28,18 @@ final class CardCombiner extends Combiner<Card>
 	public CardCombiner(final int count)
 		{
 		super(count, Statistics.getCards());
+		}
+
+	/**
+	 * @since 0.1.0
+	 */
+	public long count()
+		{
+		final var count = new AtomicLong(0L);
+
+		walk(result -> count.incrementAndGet());
+
+		return count.get();
 		}
 
 	/**
