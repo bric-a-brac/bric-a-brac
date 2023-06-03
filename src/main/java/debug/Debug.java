@@ -55,6 +55,7 @@ public class Debug
 	/**
 	 * @since 0.1.0
 	 */
+	@Deprecated
 	public static final void log(final String message)
 		{
 		//System.out.println(LocalDateTime.now().toString() + Constant.SPACE + message + Constant.SPACE + getCaller());

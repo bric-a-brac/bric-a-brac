@@ -13,6 +13,8 @@ import static util.Argument.notNull;
 import static util.Argument.strictlyPositive;
 
 /**
+ * <h4>Jeu de cartes à jouer</h4>
+ * 
  * @version 0.1.0
  * @since 0.1.0
  */
@@ -45,7 +47,7 @@ public class Deck<T extends ICard> implements IDeck<T>
 		}
 
 	/**
-	 * Retourne les cartes du paquet.
+	 * Retourne les cartes restantes du paquet.
 	 * 
 	 * @since 0.1.0
 	 */

@@ -17,6 +17,6 @@ public class ParserTest extends Assertions
 
 		assertNotNull(new Parser().parse(html));
 
-		assertNotNull(Parser.parse("", html));
+		assertNotNull(Parser.parse(html, ""));
 		}
 	}

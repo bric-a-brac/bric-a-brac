@@ -31,7 +31,7 @@ public class Parser implements IParser<String, Document, RuntimeException>
 	 * 
 	 * @since 0.1.0
 	 */
-	public static final Document parse(final String url, final String html)
+	public static final Document parse(final String html, final String url)
 		{
 		notNull(url);
 		notNull(html);

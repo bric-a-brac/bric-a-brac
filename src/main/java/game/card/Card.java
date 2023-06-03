@@ -3,6 +3,7 @@ package game.card;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.lang3.NotImplementedException;
+import org.apache.commons.math3.exception.NullArgumentException;
 import annotations.WorkInProgress;
 import parser.IStringParser;
 import parser.exceptions.ParseException;
@@ -10,7 +11,7 @@ import parser.exceptions.ParseException;
 import static util.Argument.notNull;
 
 /**
- * Carte à jouer
+ * <h4>Carte à jouer</h4>
  * 
  * @version 0.1.0
  * @since 0.1.0
