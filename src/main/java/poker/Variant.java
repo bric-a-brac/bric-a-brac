@@ -6,5 +6,5 @@ package poker;
  */
 public enum Variant
 	{
-	HOLD_EM
+	HOLDEM
 	}

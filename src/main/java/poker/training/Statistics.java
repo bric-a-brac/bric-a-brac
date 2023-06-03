@@ -1,5 +1,6 @@
 package poker.training;
 
+@Deprecated
 public final class Statistics
 	{
 	public static void main(String[] args) throws Throwable

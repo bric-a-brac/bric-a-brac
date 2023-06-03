@@ -1,21 +1,17 @@
-package poker.training;
-
-import java.util.function.Predicate;
-
-// TODO: Dans Util
+package util;
 
 /**
- * <h4>Générateur de combinaisons</h4>
+ * <h4>Générateur de combinaisons N parmis K</h4>
  * 
  * @see {@link https://www.developpez.net/forums/d1049925/java/general-java/combinaisons-p-elements-parmi-n/}
  * 
  * @version 0.1.0
  * @since 0.1.0
  */
-public final class Combiner<T> implements Predicate<T[]>
+public class Combiner<T> implements ICombiner<T>
 	{
-	private final int count;
-	private final T[] values;
+	protected final int count;
+	protected final T[] values;
 
 	private int[] indexes;
 
@@ -41,7 +37,7 @@ public final class Combiner<T> implements Predicate<T[]>
 	 * @since 0.1.0
 	 */
 	@Override
-	public boolean test(T[] result)
+	public final boolean test(T[] result)
 		{
 		if (indexes == null)
 			{
