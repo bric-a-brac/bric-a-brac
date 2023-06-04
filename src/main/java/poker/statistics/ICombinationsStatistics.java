@@ -7,10 +7,6 @@ import annotations.WorkInProgress;
  * @since 0.1.0
  */
 @WorkInProgress
-public interface ICombinationsProvider<T> extends IProvider<T>
+public interface ICombinationsStatistics<T>
 	{
-	/**
-	 * @since 0.1.0
-	 */
-	public long getCombinations();
 	}

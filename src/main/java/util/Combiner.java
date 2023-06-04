@@ -1,5 +1,9 @@
 package util;
 
+import org.apache.commons.math3.exception.NotStrictlyPositiveException;
+
+import static util.Argument.strictlyPositive;
+
 /**
  * <h4>Générateur de combinaisons N parmis K</h4>
  * 
@@ -16,11 +20,15 @@ public class Combiner<T> implements ICombiner<T>
 	private int[] indexes;
 
 	/**
+	 * @throws NotStrictlyPositiveException
+	 * 
 	 * @since 0.1.0
 	 */
 	public Combiner(final int count, final T[] values)
 		{
 		super();
+
+		strictlyPositive(count);
 
 		this.count = count;
 		this.values = values;

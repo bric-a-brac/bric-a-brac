@@ -2,6 +2,8 @@ package game.card;
 
 import org.apache.commons.math3.exception.NullArgumentException;
 
+import poker.IHand;
+
 import static util.Argument.notNull;
 
 /**
@@ -91,6 +93,16 @@ public interface IFormatter
 			return new String(characters);
 			}
 		};
+
+	/**
+	 * @throws UnsupportedOperationException
+	 * 
+	 * @since 0.1.0
+	 */
+	public default String toString(final IHand<?> hand)
+		{
+		throw new UnsupportedOperationException();
+		}
 
 	/**
 	 * @throws UnsupportedOperationException

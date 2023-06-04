@@ -1,12 +1,13 @@
 package poker.evaluator;
 
 import java.io.IOException;
+import poker.Poker;
 
 public class SpeedTest
 	{
 	public static void test() throws IOException
 		{
-		final var evaluator = new Evaluator();
+		final var evaluator = Poker.getPokerEvaluator();
 
 		int u0, u1, u2, u3, u4, u5;
 		int c0, c1, c2, c3, c4, c5, c6;

@@ -4,8 +4,7 @@ public class Dev
 	{
 	public static void hlbnet()
 		{
-		System.out.println(StatisticsHlbnet.combinations(5));
-		System.out.println(StatisticsHlbnet.combinations(7));
+		new Statistics(new Hlbnet()).dev();
 		}
 
 	public static void main(String[] args) throws Throwable

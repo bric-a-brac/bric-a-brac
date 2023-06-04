@@ -1,19 +1,29 @@
 package poker.statistics;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.apache.commons.math3.util.Combinations;
 import annotations.WorkInProgress;
-import game.card.Card;
-import poker.evaluator.Evaluator;
-import poker.evaluator.Type;
 
+/**
+ * @version 0.1.0
+ * @since 0.1.0
+ */
 @WorkInProgress
-final class StatisticsMath3
+final class Math3
 	{
+	/**
+	 * @throws NullArgumentException
+	 * @throws NotStrictlyPositiveException
+	 * 
+	 * @since 0.1.0
+	 */
+	/*
+	@Override
+	public void walk(final int count, final Consumer<Card[]> consumer)
+		{
+		throw new NotImplementedException();
+		}
+	*/
+
+	/*
 	private static final int N = 7;
 
 	public static Map<Type, AtomicInteger> getStatistics() throws IOException
@@ -47,4 +57,5 @@ final class StatisticsMath3
 
 		return hands;
 		}
+	*/
 	}

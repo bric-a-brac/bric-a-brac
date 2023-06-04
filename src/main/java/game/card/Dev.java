@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import poker.evaluator.Evaluator;
+import poker.Poker;
 
 public class Dev
 	{
@@ -36,7 +36,7 @@ public class Dev
 		System.out.println(toString(flop));
 		System.out.println();
 
-		final var evaluator = new Evaluator();
+		final var evaluator = Poker.getPokerEvaluator();
 
 		players.forEach(cards ->
 			{

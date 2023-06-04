@@ -30,6 +30,7 @@ public class Evaluator implements IEvaluator
 	 * 
 	 * @since 0.1.0
 	 */
+	@Deprecated
 	public Evaluator() throws IOException
 		{
 		this(DEFAULT_HAND_RANKS_PATH);
@@ -108,6 +109,7 @@ public class Evaluator implements IEvaluator
 	/**
 	 * @since 0.1.0
 	 */
+	@Override
 	public final int getNewPosition(final int position)
 		{
 		return ranks.getInt(position * 4);
