@@ -18,6 +18,7 @@ import static util.Argument.notNull;
  */
 public class Card implements ICard
 	{
+	@Deprecated
 	private static final String FORMAT = "%s[rank=%s, suit=%s]";
 
 	protected static final int SUIT_LENGTH = Suit.values().length;

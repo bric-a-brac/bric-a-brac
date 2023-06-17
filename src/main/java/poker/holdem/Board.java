@@ -1,6 +1,8 @@
 package poker.holdem;
 
-public class Board
+// IBoard
+
+public final class Board
 	{
 	public void getFlop()
 		{

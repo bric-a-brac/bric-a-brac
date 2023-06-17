@@ -4,6 +4,8 @@ import java.util.List;
 import game.card.ICard;
 
 /**
+ * <h4>IHand</h4>
+ * 
  * @version 0.1.0
  * @since 0.1.0
  */

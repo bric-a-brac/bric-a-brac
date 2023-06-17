@@ -2,6 +2,7 @@ package util;
 
 import org.apache.commons.math3.exception.NotStrictlyPositiveException;
 import org.apache.commons.math3.exception.NullArgumentException;
+import org.apache.commons.math3.exception.NumberIsTooLargeException;
 
 /**
  * @version 0.1.0
@@ -29,11 +30,28 @@ public class Argument
 	 * 
 	 * @since 0.1.0
 	 */
-	public static void strictlyPositive(final int value)
+	public static final int strictlyPositive(final int value)
 		{
 		if (value <= 0)
 			{
 			throw new NotStrictlyPositiveException(Integer.valueOf(value));
 			}
+
+		return value;
+		}
+
+	/**
+	 * @throws NumberIsTooLargeException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final int smallerThan(final int value, final int max)
+		{
+		if (value > max)
+			{
+			throw new NumberIsTooLargeException(Integer.valueOf(value), Integer.valueOf(max), true);
+			}
+
+		return value;
 		}
 	}

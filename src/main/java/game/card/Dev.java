@@ -1,18 +1,17 @@
 package game.card;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import poker.Poker;
-
 public class Dev
 	{
+	/*
 	public static String toString(final List<Card> cards)
 		{
+		Comparator sd;
+
 		return cards.stream().map(IFormatter.DEFAULT::toString).collect(Collectors.toList()).toString();
 		}
+	*/
 
+	/*
 	public static void deal() throws IOException
 		{
 		final var deck = Deck.get();
@@ -50,7 +49,9 @@ public class Dev
 			System.out.println();
 			});
 		}
+	*/
 
+	/*
 	public static void shuffle()
 		{
 		//final var deck = Deck.get();
@@ -66,17 +67,19 @@ public class Dev
 			System.out.println(String.join("", cards));
 			}
 		}
+	*/
 
+	/*
 	public static void parse()
 		{
 		//new Parser().parse("ASAHKC");
 		}
+	*/
 
 	public static void main(String[] args) throws Throwable
 		{
 		//deal();
 		//shuffle();
-
-		parse();
+		//parse();
 		}
 	}

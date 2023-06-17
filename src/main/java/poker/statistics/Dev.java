@@ -1,15 +1,20 @@
 package poker.statistics;
 
+import java.io.IOException;
+
 public class Dev
 	{
-	public static void hlbnet()
+	public static void asdsa() throws IOException
 		{
-		new Statistics(new Hlbnet()).dev();
+		final var statistics = new Statistics();
+
+		statistics.build();
+
+		//statistics.evaluate(null);
 		}
 
 	public static void main(String[] args) throws Throwable
 		{
-		hlbnet();
 		}
 
 	//System.out.println("Nombre de combinaisons de 5 cartes: " + n);

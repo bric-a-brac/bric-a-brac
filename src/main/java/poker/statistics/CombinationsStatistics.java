@@ -7,6 +7,6 @@ import annotations.WorkInProgress;
  * @since 0.1.0
  */
 @WorkInProgress
-public interface ICombinationsStatistics
+public class CombinationsStatistics implements ICombinationsStatistics
 	{
 	}

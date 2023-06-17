@@ -1,7 +1,6 @@
 package game.card;
 
 import org.apache.commons.math3.exception.NullArgumentException;
-
 import poker.IHand;
 
 import static util.Argument.notNull;

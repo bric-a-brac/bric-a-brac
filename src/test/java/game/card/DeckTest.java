@@ -75,4 +75,28 @@ public class DeckTest extends Assertions
 			deck.deal(4);
 			});
 		}
+
+	@Test
+	public void testFind()
+		{
+		final var deck = Deck.get();
+
+		deck.shuffle();
+
+		var card = deck.deal();
+
+		// Rechercher la carte que l'on vient de dealer
+		var found = deck.find(card.getRank(), card.getSuit());
+
+		assertFalse(found.isPresent());
+
+		// Regarder la 10ème carte
+		card = deck.getCards().get(10);
+
+		// Rechercher la 10ème carte
+		found = deck.find(card.getRank(), card.getSuit());
+
+		assertTrue(found.isPresent());
+		assertEquals(9, found.get());
+		}
 	}

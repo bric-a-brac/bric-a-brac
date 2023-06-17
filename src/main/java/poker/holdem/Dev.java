@@ -1,29 +1,19 @@
 package poker.holdem;
 
-import game.card.Deck;
-import poker.Player;
-
 public class Dev
 	{
-	public static void game()
+	public static void table()
 		{
-		final var deck = Deck.get();
+		final var table = new Table();
 
-		deck.shuffle();
-
-		final var player = new Player<Hand>("Shadok", new Hand());
-
-		player.getHand().getCards().add(deck.deal());
-		player.getHand().getCards().add(deck.deal());
-
-		//player.setHand(null);
-
-		final var board = new Board();
-
-		board.getFlop();
+		table.getPlayers().add(new Player("Shadok"));
+		table.getPlayers().add(new Player("Vilain #1"));
+		table.getPlayers().add(new Player("Vilain #2"));
+		table.getPlayers().add(new Player("Vilain #3"));
 		}
 
 	public static void main(String[] args) throws Throwable
 		{
+		table();
 		}
 	}
