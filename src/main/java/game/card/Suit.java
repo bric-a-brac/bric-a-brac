@@ -18,7 +18,7 @@ public enum Suit
 	/**
 	 * @since 0.1.0
 	 */
-	public static final <T extends ICard> Predicate<T> same(final Suit suit)
+	public static final Predicate<ICard> same(final Suit suit)
 		{
 		return card -> notNull(card).getSuit().equals(notNull(suit));
 		}

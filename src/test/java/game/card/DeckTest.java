@@ -1,7 +1,5 @@
 package game.card;
 
-import java.util.List;
-import java.util.function.Supplier;
 import org.apache.commons.math3.exception.NullArgumentException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,7 @@ public class DeckTest extends Assertions
 	@Test
 	public void testConstructorNull()
 		{
+		/*
 		assertThrowsExactly(NullArgumentException.class, () ->
 			{
 			new Deck<ICard>((Supplier<List<ICard>>) null);
@@ -21,15 +20,16 @@ public class DeckTest extends Assertions
 			{
 			new Deck<ICard>(() -> null);
 			});
+		*/
 
 		assertThrowsExactly(NullArgumentException.class, () ->
 			{
-			new Deck<ICard>((List<ICard>) null);
+			new Deck<>(null);
 			});
 		}
 
 	@Test
-	public void testGetDeck()
+	public void testGet()
 		{
 		final var deck = Deck.get();
 

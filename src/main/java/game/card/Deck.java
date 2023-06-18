@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.math3.exception.NotStrictlyPositiveException;
-import org.apache.commons.math3.random.MersenneTwister;
-import org.apache.commons.math3.random.RandomGenerator;
 import annotations.WorkInProgress;
 import game.card.exceptions.CardNotFoundException;
 import game.card.exceptions.NoMoreCardException;
@@ -24,21 +23,7 @@ import static util.Argument.strictlyPositive;
  */
 public class Deck<T extends ICard> implements IDeck<T>
 	{
-	@Deprecated
-	private static final RandomGenerator RANDOM = new MersenneTwister();
-
 	protected final List<T> cards;
-
-	/**
-	 * @throws NullArgumentException
-	 * 
-	 * @since 0.1.0
-	 */
-	@Deprecated
-	public Deck(final Supplier<List<T>> supplier)
-		{
-		throw new NotImplementedException();
-		}
 
 	/**
 	 * @throws NullArgumentException
@@ -115,11 +100,15 @@ public class Deck<T extends ICard> implements IDeck<T>
 		//final Predicate<T> sameRank = card -> card.getRank() == rank;
 		//final Predicate<T> sameSuit = card -> card.getSuit() == suit;
 		//final var same = sameRank.and(sameSuit);
+		@SuppressWarnings("unused")
+		final Predicate<ICard> same = Rank.same(rank).and(Suit.same(suit));
 
 		var index = 0;
 
 		for (final var card : cards)
 			{
+			//if (same.test(card)){}
+
 			if (card.getRank() == rank && card.getSuit() == suit)
 				{
 				return Optional.of(Integer.valueOf(index));

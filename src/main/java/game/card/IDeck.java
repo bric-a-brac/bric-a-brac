@@ -50,7 +50,7 @@ public interface IDeck<T extends ICard>
 	/**
 	 * @since 0.1.0
 	 */
-	public default void shuffle(Shuffler<T> shuffler)
+	public default void shuffle(IShuffler<T> shuffler)
 		{
 		throw new NotImplementedException();
 		}

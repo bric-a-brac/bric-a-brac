@@ -1,4 +1,4 @@
-package poker.dev;
+package poker.evaluator;
 
 import java.util.List;
 import java.util.function.Function;

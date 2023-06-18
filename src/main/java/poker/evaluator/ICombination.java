@@ -1,4 +1,4 @@
-package poker.dev;
+package poker.evaluator;
 
 /**
  * <h4>ICombination</h4>

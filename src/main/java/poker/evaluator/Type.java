@@ -1,10 +1,11 @@
 package poker.evaluator;
 
+import annotations.WorkInProgress;
+
 /**
  * @version 0.1.0
  * @since 0.1.0
  */
-@Deprecated
 public enum Type
 	{
 	INVALID,
@@ -19,13 +20,21 @@ public enum Type
 	FOUR_OF_A_KIND,
 	STRAIGHT_FLUSH;
 
+	/**
+	 * @since 0.1.0
+	 */
 	public final boolean isValid()
 		{
 		return this != INVALID;
 		}
 
+	/**
+	 * @since 0.1.0
+	 */
+	@WorkInProgress
 	public static final Type get(final int type)
 		{
+		// TODO: Check bound
 		return values()[type];
 		}
 	}

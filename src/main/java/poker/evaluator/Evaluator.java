@@ -1,4 +1,4 @@
-package poker.dev;
+package poker.evaluator;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -78,6 +78,4 @@ public class Evaluator implements IEvaluator
 		{
 		return ranks.getInt(position * 4);
 		}
-
-	//position = getNewPosition(position + card.getValue() + 1);
 	}

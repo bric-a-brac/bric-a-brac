@@ -27,7 +27,7 @@ public enum Rank
 	/**
 	 * @since 0.1.0
 	 */
-	public static final <T extends ICard> Predicate<T> same(final Rank rank)
+	public static final Predicate<ICard> same(final Rank rank)
 		{
 		return card -> notNull(card).getRank().equals(notNull(rank));
 		}

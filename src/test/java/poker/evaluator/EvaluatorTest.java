@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import game.card.Card;
 import game.card.Rank;
 import game.card.Suit;
-import poker.Poker;
 
 public class EvaluatorTest extends Assertions
 	{
@@ -18,7 +17,7 @@ public class EvaluatorTest extends Assertions
 		{
 		try
 			{
-			evaluator = Poker.getPokerEvaluator();
+			evaluator = new Evaluator();
 			}
 		catch (final IOException ex)
 			{

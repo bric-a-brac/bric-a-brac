@@ -30,7 +30,7 @@ public interface ICard extends Comparable<ICard>
 
 	public static final Function<ICard, Integer> CARD_TO_VALUE = ICard::getValue;
 
-	//public static final Predicate<ICard> sds = null;
+	//public static final Predicate<ICard> SAME = card -> Rank.same(card.getRank()).;
 
 	/*
 	public static final IStringParser<List<Card>, IllegalArgumentException> PARSER = value ->

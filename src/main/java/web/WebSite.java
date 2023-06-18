@@ -38,6 +38,7 @@ public class WebSite<T extends IWebPage> implements IWebSite<T>
 	 * @since 0.1.0
 	 */
 	@Override
+	@WorkInProgress
 	public final boolean isPartOf(final String url)
 		{
 		notNull(url);

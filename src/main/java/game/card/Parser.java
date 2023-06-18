@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import parser.IStringParser;
 import util.Constant;
 
-@Deprecated // Dans Card
+@Deprecated // Dans Card... NON séparé
 public class Parser implements IStringParser<List<Card>, IllegalArgumentException>
 	{
 	private static final List<Card> DECK = Card.get();

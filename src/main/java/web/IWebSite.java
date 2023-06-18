@@ -8,9 +8,18 @@ package web;
  */
 public interface IWebSite<T extends IWebPage>
 	{
+	/**
+	 * @since 0.1.0
+	 */
 	public String getRootURL();
 
+	/**
+	 * @since 0.1.0
+	 */
 	public boolean isPartOf(String url);
 
+	/**
+	 * @since 0.1.0
+	 */
 	public void parse(IWebParser<T> parser);
 	}

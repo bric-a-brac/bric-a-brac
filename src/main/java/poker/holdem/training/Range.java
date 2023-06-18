@@ -1,4 +1,4 @@
-package poker.training;
+package poker.holdem.training;
 
 /**
  * @version 0.1.0

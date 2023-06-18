@@ -1,4 +1,4 @@
-package poker.dev;
+package poker.evaluator;
 
 import java.io.IOException;
 import java.nio.file.Path;

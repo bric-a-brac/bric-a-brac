@@ -1,4 +1,4 @@
-package poker.dev;
+package poker.evaluator;
 
 /**
  * <h4>Une combinaison de cartes de poker</h4>
@@ -18,9 +18,10 @@ public final class Combination implements ICombination
 
 		final var type = value >> 12;
 
-		if (type == 0)
-			{
-			}
+		// TODO: Check VALID
+		if (type == 0){}
+		//if (!type.isValid())
+			//throw new InvalidHandException();
 
 		final var rank = value & 0x00000FFF;
 

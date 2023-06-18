@@ -14,9 +14,9 @@ import static util.Argument.notNull;
  * @version 0.1.0
  * @since 0.1.0
  */
-public abstract class Shuffler<T extends ICard> implements IShuffler<T>
+public abstract class AbstractShuffler<T extends ICard> implements IShuffler<T>
 	{
-	public static final class MT extends Shuffler<ICard>
+	public static final class MT extends AbstractShuffler<ICard>
 		{
 		private final RandomGenerator RANDOM = new MersenneTwister();
 

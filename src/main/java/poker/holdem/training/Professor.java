@@ -1,4 +1,4 @@
-package poker.training;
+package poker.holdem.training;
 
 /**
  * <h4>Professor<h4>
