@@ -1,10 +1,10 @@
-package net.api;
+package api;
 
 import java.io.IOException;
 import java.util.List;
 import org.apache.commons.lang3.NotImplementedException;
 import annotations.Discontinued;
-import net.Client;
+import http.Client;
 
 /**
  * @version 0.1.0

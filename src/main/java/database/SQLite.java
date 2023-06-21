@@ -13,18 +13,17 @@ import static util.Argument.notNull;
  */
 public class SQLite extends Database<SQLiteConnection>
 	{
-	private static final String CONNECTION_STRING = "jdbc:sqlite:%s";
-
-	private static final String MEMORY = ":memory:";
+	protected static final String CONNECTION_STRING = "jdbc:sqlite:%s";
 
 	/**
+	 * @throws NullArgumentException
 	 * @throws SQLException
 	 * 
 	 * @since 0.1.0
 	 */
-	public SQLite() throws SQLException
+	protected SQLite(final String connectionString) throws SQLException
 		{
-		super(String.format(CONNECTION_STRING, MEMORY));
+		super(connectionString);
 		}
 
 	/**

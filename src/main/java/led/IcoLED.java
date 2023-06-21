@@ -6,8 +6,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import org.apache.commons.lang3.function.FailableRunnable;
 import com.google.gson.Gson;
+import http.Client;
 import image.Icon16;
-import net.Client;
 import util.Util;
 
 //import static util.Argument.notNull;

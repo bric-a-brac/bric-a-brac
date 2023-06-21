@@ -1,4 +1,4 @@
-package net;
+package http;
 
 import java.io.IOException;
 import java.net.http.HttpRequest;

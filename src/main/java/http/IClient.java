@@ -1,4 +1,4 @@
-package net;
+package http;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -36,6 +36,9 @@ public interface IClient
 	 */
 	public static final BodyHandler<Document> HTML = responseInfo -> BodySubscribers.mapping(BodySubscribers.ofString(StandardCharsets.UTF_8), Jsoup::parse);
 
+	// TODO: HTML parse(html, uri)
+	public static final BodyHandler<Document> HTMLbis = responseInfo -> null;
+
 	/**
 	 * @since 0.1.0
 	 */
@@ -63,7 +66,7 @@ public interface IClient
 	 * 
 	 * @since 0.1.0
 	 */
-	public default String get(URI uri) throws IOException
+	public default String get(final URI uri) throws IOException
 		{
 		return get(uri, TEXT);
 		}
@@ -73,7 +76,7 @@ public interface IClient
 	 * 
 	 * @since 0.1.0
 	 */
-	public default <T> T get(String url, BodyHandler<T> handler) throws IOException
+	public default <T> T get(final String url, final BodyHandler<T> handler) throws IOException
 		{
 		return get(URI.create(url), handler);
 		}
@@ -83,7 +86,7 @@ public interface IClient
 	 * 
 	 * @since 0.1.0
 	 */
-	public <T> T get(URI uri, BodyHandler<T> handler) throws IOException;
+	public <T> T get(final URI uri, final BodyHandler<T> handler) throws IOException;
 
 	// DEV
 	public <T> T send(ISender<T> sender) throws IOException;

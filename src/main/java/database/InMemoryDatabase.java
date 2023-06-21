@@ -8,9 +8,11 @@ import java.sql.SQLException;
  */
 public final class InMemoryDatabase extends SQLite
 	{
+	private static final String MEMORY = ":memory:";
+
 	public InMemoryDatabase() throws SQLException
 		{
-		super();
+		super(String.format(CONNECTION_STRING, MEMORY));
 		}
 
 	/*

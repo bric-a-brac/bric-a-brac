@@ -8,8 +8,8 @@ import java.util.function.BiConsumer;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jsoup.nodes.Document;
+import http.SimpleClient;
 import io.IO;
-import net.SimpleClient;
 
 /**
  * @version 0.1.0

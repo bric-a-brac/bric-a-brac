@@ -6,7 +6,7 @@ public class Dev
 	{
 	public static void sqlite() throws SQLException
 		{
-		try (final var database = new SQLite())
+		try (final var database = new InMemoryDatabase())
 			{
 			database.getConnection().createStatement().execute("CREATE TABLE t (INT f)");
 

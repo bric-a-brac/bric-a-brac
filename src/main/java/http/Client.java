@@ -1,4 +1,4 @@
-package net;
+package http;
 
 import java.io.IOException;
 import java.net.URI;
@@ -51,17 +51,19 @@ public class Client implements IClient, IDownloader<Void>
 		return userAgent;
 		}
 
+	/*
 	@Override
-	public void download(String url) throws IOException
+	public void download(final String url) throws IOException
 		{
 		throw new NotImplementedException();
 		}
 
 	@Override
-	public void download(URI uri) throws IOException
+	public void download(final URI uri) throws IOException
 		{
 		throw new NotImplementedException();
 		}
+	*/
 
 	/**
 	 * @throws NullArgumentException

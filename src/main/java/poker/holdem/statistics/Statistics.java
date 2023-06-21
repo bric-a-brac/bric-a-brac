@@ -73,6 +73,7 @@ public class Statistics extends Evaluator
 		throw new NotImplementedException();
 		}
 
+	@SuppressWarnings("unused")
 	private final class CombinationIterator implements Iterator<ICombination>
 		{
 		private AbstractCombinationNK dfdf;

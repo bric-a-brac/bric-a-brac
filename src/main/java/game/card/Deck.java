@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.math3.exception.NotStrictlyPositiveException;
 import annotations.WorkInProgress;
