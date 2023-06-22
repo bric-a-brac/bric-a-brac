@@ -6,23 +6,25 @@ import website.builder.IConfiguration;
 import website.builder.WebSiteBuilder;
 
 @WorkInProgress
-public class Blog extends WebSiteBuilder implements IConfiguration
+public final class Blog extends WebSiteBuilder
 	{
 	public void build() throws IOException
 		{
-		build(this);
+		build(new IConfiguration()
+			{
+			public void asdsa()
+				{
+				}
+			});
 		}
 
 	public static void main(String[] args) throws Throwable
 		{
 		new Blog().build();
 
-		//final var article = ODT.map(Paths.get("sdsd"));
-
-		//final var html = article.layout();
-
-		//System.out.println(html);
-
-		
+		//final var builder = new WebSiteBuilder();
+		//final var website = builder.build(configuration);
+		//System.out.println(website);
+		//builder.build(configuration);
 		}
 	}

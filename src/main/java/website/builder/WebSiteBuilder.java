@@ -14,7 +14,7 @@ import annotations.WorkInProgress;
 public class WebSiteBuilder implements IWebSiteBuilder
 	{
 	@Override
-	public void accept(final IConfiguration configuration) throws IOException
+	public final IWebSite apply(final IConfiguration configuration) throws IOException
 		{
 		throw new NotImplementedException();
 		}
@@ -28,6 +28,8 @@ public class WebSiteBuilder implements IWebSiteBuilder
 
 		final var builder = new WebSiteBuilder();
 
-		builder.build(configuration);
+		final var website = builder.build(configuration);
+
+		System.out.println(website);
 		}
 	}

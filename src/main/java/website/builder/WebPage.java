@@ -19,17 +19,4 @@ public class WebPage extends Component implements IWebPage
 		{
 		return "<html></html>";
 		}
-
-	/*
-	@Override
-	public String render()
-		{
-		getComponents().forEach(component ->
-			{
-			component.render();
-			});
-
-		throw new NotImplementedException();
-		}
-	*/
 	}

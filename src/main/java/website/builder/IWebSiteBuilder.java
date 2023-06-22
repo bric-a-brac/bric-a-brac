@@ -1,7 +1,7 @@
 package website.builder;
 
 import java.io.IOException;
-import org.apache.commons.lang3.function.FailableConsumer;
+import org.apache.commons.lang3.function.FailableFunction;
 import annotations.WorkInProgress;
 
 /**
@@ -12,15 +12,15 @@ import annotations.WorkInProgress;
  */
 @WorkInProgress
 @FunctionalInterface
-public interface IWebSiteBuilder extends FailableConsumer<IConfiguration, IOException>
+public interface IWebSiteBuilder extends FailableFunction<IConfiguration, IWebSite, IOException>
 	{
 	/**
 	 * @throws IOException
 	 * 
 	 * @since 0.1.0
 	 */
-	public default void build(final IConfiguration configuration) throws IOException
+	public default IWebSite build(final IConfiguration configuration) throws IOException
 		{
-		accept(configuration);
+		return apply(configuration);
 		}
 	}

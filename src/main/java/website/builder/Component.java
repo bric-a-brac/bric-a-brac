@@ -13,6 +13,8 @@ import annotations.WorkInProgress;
 public class Component implements IComponent
 	{
 	/**
+	 * @throws NotImplementedException
+	 * 
 	 * @since 0.1.0
 	 */
 	@Override
