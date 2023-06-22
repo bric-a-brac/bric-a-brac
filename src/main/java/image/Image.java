@@ -1,28 +1,23 @@
 package image;
 
-import java.awt.Point;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import javax.imageio.ImageIO;
+import org.apache.commons.lang3.NotImplementedException;
 import org.apache.commons.math3.exception.NullArgumentException;
-import image.exceptions.InvalidImageException;
 import image.exceptions.InvalidImageSizeException;
 
 import static io.IO.toFile;
-import static util.Argument.notNull;
+//import static util.Argument.notNull;
 
 /**
  * @version 0.1.0
  * @since 0.1.0
  */
-public class Image
+public class Image implements IImage
 	{
 	protected final BufferedImage image;
 
@@ -47,7 +42,7 @@ public class Image
 		{
 		super();
 
-		image = read(file);
+		image = FILE_READER.apply(file);
 		}
 
 	/**
@@ -64,6 +59,7 @@ public class Image
 	/**
 	 * @since 0.1.0
 	 */
+	@Override
 	public final BufferedImage getBufferedImage()
 		{
 		return image;
@@ -72,9 +68,10 @@ public class Image
 	/**
 	 * @since 0.1.0
 	 */
+	@Override
 	public final List<Pixel> getPixels()
 		{
-		return getPixels(image);
+		return PIXELS.apply(image);
 		}
 
 	/**
@@ -82,90 +79,16 @@ public class Image
 	 * 
 	 * @since 0.1.0
 	 */
+	@Deprecated
 	public final void walk(final Consumer<Pixel> consumer)
 		{
+		throw new NotImplementedException();
+
+		/*
 		notNull(consumer);
 
 		getPixels().stream().forEach(consumer);
-		}
-
-	/**
-	 * @throws NullArgumentException
-	 * 
-	 * @since 0.1.0
-	 */
-	public static final List<Pixel> getPixels(final BufferedImage image)
-		{
-		notNull(image);
-
-		final var width = image.getWidth();
-		final var height = image.getHeight();
-
-		final var pixels = new ArrayList<Pixel>();
-
-		for (var y = 0; y < height; y++)
-			{
-			for (var x = 0; x < width; x++)
-				{
-				pixels.add(new Pixel(image.getRGB(x, y), new Point(x, y)));
-				}
-			}
-
-		return pixels;
-		}
-
-	/**
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
-	public static final BufferedImage read(final File file) throws IOException
-		{
-		final var image = ImageIO.read(notNull(file));
-
-		if (image == null)
-			{
-			throw new InvalidImageException();
-			}
-
-		return image;
-		}
-
-	/**
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
-	public static final BufferedImage read(final InputStream input) throws IOException
-		{
-		notNull(input);
-
-		final var image = ImageIO.read(input);
-
-		if (image == null)
-			{
-			throw new InvalidImageException();
-			}
-
-		return image;
-		}
-
-	/**
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
-	public static final BufferedImage read(final byte[] bytes) throws IOException
-		{
-		notNull(bytes);
-
-		try (final var input = new ByteArrayInputStream(bytes))
-			{
-			return read(input);
-			}
+		*/
 		}
 
 	/**

@@ -6,7 +6,7 @@ import java.io.IOException;
  * @version 0.1.0
  * @since 0.1.0
  */
-public class Icon extends Image
+public class Icon extends Image implements IIcon
 	{
 	protected final int size;
 
@@ -28,6 +28,7 @@ public class Icon extends Image
 	/**
 	 * @since 0.1.0
 	 */
+	@Override
 	public final int getSize()
 		{
 		return size;

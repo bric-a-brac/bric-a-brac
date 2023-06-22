@@ -6,7 +6,7 @@ import java.io.UncheckedIOException;
 import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodySubscribers;
 import com.google.gson.Gson;
-import image.Image;
+import image.IImage;
 
 /**
  * @version 0.1.0
@@ -31,7 +31,7 @@ public interface IContentHandler<T> extends BodyHandler<T>
 			{
 			try
 				{
-				return Image.read(input);
+				return IImage.INPUT_STREAM_READER.apply(input);
 				}
 			catch (final IOException ex)
 				{
