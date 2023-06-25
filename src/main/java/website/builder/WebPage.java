@@ -1,6 +1,7 @@
 package website.builder;
 
 import annotations.WorkInProgress;
+import website.builder.components.Component;
 
 /**
  * <h4>WebPage</h4>

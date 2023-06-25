@@ -1,7 +1,6 @@
 package website.blog;
 
 import annotations.WorkInProgress;
-import website.builder.IComponent;
 import website.builder.IWebPage;
 
 /**
@@ -13,5 +12,5 @@ import website.builder.IWebPage;
 @WorkInProgress
 public interface IArticle extends IWebPage
 	{
-	public IComponent getBody();
+	//public IComponent getBody();
 	}

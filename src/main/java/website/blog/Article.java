@@ -1,8 +1,6 @@
 package website.blog;
 
-import org.apache.commons.lang3.NotImplementedException;
 import annotations.WorkInProgress;
-import website.builder.IComponent;
 import website.builder.WebPage;
 
 /**
@@ -14,9 +12,11 @@ import website.builder.WebPage;
 @WorkInProgress
 public class Article extends WebPage implements IArticle
 	{
+	/*
 	@Override
 	public IComponent getBody()
 		{
-		throw new NotImplementedException();
+		return components.get("body");
 		}
+	*/
 	}

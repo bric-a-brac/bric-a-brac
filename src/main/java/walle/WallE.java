@@ -1,71 +1,56 @@
 package walle;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import annotations.WorkInProgress;
+import html.Parser;
 
 /**
- * <h4>WallE (WebAllEngine) ;-)</h4>
+ * <h4>WallE</h4>
  * 
  * @version 0.1.0
  * @since 0.1.0
  */
 @WorkInProgress
-public final class WallE //extends EventListenerSupport<IEventListener> //extends Client
+public final class WallE extends Client implements Runnable
 	{
-	//private static final Logger LOGGER = Logger.getLogger(WallE.class.getSimpleName());
-	//private final ExecutorService executor = Executors.newSingleThreadExecutor();
-	//final var future = executor.submit(() -> task.apply("https://schema.org/OrderStatus"));
-
-	//private static final String USER_AGENT = "WallE/0.1.0";
-
-	//private static final IClient CLIENT = new Client(USER_AGENT);
-
-	//private final EventListenerSupport<IEventListener> eventListeners = EventListenerSupport.create(IEventListener.class);
-
-	/*
-	public void addEventListener(final IEventListener listener)
+	private WallE()
 		{
-		eventListeners.addListener(notNull(listener), false);
+		super();
 		}
 
-	public void removeEventListener(final IEventListener listener)
+	@Override
+	public void run()
 		{
-		eventListeners.removeListener(notNull(listener));
-		}
-	*/
+		final var jobs = new ArrayList<String>();
+		final var urls = new ArrayList<String>();
 
-	/**
-	 * @throws NullArgumentException
-	 * @throws IOException
-	 * 
-	 * @since 0.1.0
-	 */
-	public void dev(final String url) throws IOException
-		{
-		/*
-		notNull(url);
+		jobs.add("https://www.ritzy.ch/");
 
-		final var html = CLIENT.get(url);
+		while (urls.size() < 25)
+			{
+			final var job = jobs.remove(0);
 
-		final var document = Parser.parse(url, html);
+			System.out.println(job);
 
-		final var keywords = Extractors.KEYWORDS.apply(document);
+			urls.add(job);
 
-		System.out.println(keywords);
+			get(job).ifPresent(document ->
+				{
+				final var links = Parser.links(document);
 
-		final var links = Extractors.LINKS.apply(document);
-
-		System.out.println(links);
-
-		//eventListeners.fire().onDownload(new DownloadEvent(url, html));
-		//return new WebPage(url, CLIENT.get(url));
-		*/
+				links.forEach(link ->
+					{
+					if (urls.indexOf(link) == -1)
+						{
+						jobs.add(link);
+						}
+					});
+				});
+			}
 		}
 
-	/*
-	public static final String getPreference(final String preference)
+	public static void main(final String[] args)
 		{
-		return Util.getPreference(WallE.class, notNull(preference));
+		new WallE().run();
 		}
-	*/
 	}

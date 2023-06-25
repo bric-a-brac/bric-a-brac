@@ -1,42 +1,37 @@
 package walle;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.function.Predicate;
+import util.Constant;
+import walle.temp.WallE;
+
+import static util.Argument.notNull;
+
 public class Dev
 	{
-	public static void main(String[] args)
+	// TODO: Dans Util IO.... et trouver nom ;)
+	public static final Predicate<Path> START_WITH_DOT = path ->
 		{
-		//private final List<String> links = new ArrayList<>();
-		//links.add(url);
+		notNull(path);
 
-		/*
-		try
+		for (final var part : path)
 			{
-			final var website = "https://www.ritzy.ch";
-
-			final var root = new URI(website);
-
-			final var client = new SimpleClient("Wall-E");
-
-			final var document = client.getAsDocument(root);
-
-			final var links = new LinkExtractor().parse(document);
-
-			for (final var link : links)
+			if (part.toString().startsWith(Constant.DOT))
 				{
-				final var builder = new URIBuilder(link);
-
-				// Same WebSite
-				//if (website.equals(builder.getHost()))
-					{
-					System.out.println(link);
-					System.out.println(builder.setFragment(null).build().toURL().toString());
-					System.out.println();
-					}
+				return true;
 				}
 			}
-		catch (final Throwable ex)
-			{
-			ex.printStackTrace();
-			}
-		*/
+
+		return false;
+		};
+
+	public static void main(String[] args)
+		{
+		new Client().d();
+
+		//final var path = Paths.get(".sddd");
+		//final var ok = START_WITH_DOT.test(path);
+		//System.out.println(ok);
 		}
 	}

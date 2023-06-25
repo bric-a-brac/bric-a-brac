@@ -1,7 +1,6 @@
 package website.blog;
 
 import annotations.WorkInProgress;
-import website.builder.Component;
 import website.builder.WebPage;
 
 /**
@@ -13,8 +12,10 @@ import website.builder.WebPage;
 @WorkInProgress
 public class Articles extends WebPage
 	{
+	/*
 	@SuppressWarnings("unused")
 	private class L extends Component
 		{
 		}
+	*/
 	}
