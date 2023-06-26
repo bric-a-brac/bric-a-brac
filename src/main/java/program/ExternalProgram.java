@@ -1,68 +1,46 @@
 package program;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.List;
 import annotations.WorkInProgress;
 
 @WorkInProgress
 public class ExternalProgram implements IExternalProgram
 	{
-	/*
-	@OneShot
-	//@Override
-	public final void run() throws IOException
+	@Deprecated
+	protected final String badStdoutOrStdErr(int exitCode, ByteArrayOutputStream stdout, ByteArrayOutputStream stderr)
 		{
-		final ProcessBuilder builder = new ProcessBuilder();
+		return exitCode == 0 ? stdout.toString() : stderr.toString();
+		}
 
-		//builder.command(option.getCommand());
+	@Deprecated
+	protected final String asStringOrThrow(int exitCode, ByteArrayOutputStream stdout, ByteArrayOutputStream stderr) throws IOException
+		{
+		if (exitCode == 0)
+			{
+			return stdout.toString();
+			}
 
+		throw new IOException();
+		}
+
+	protected final <T> T run(final List<String> command, final IFindGoodName<T> findGoodName) throws IOException, InterruptedException
+		{
 		try (final var stdout = new ByteArrayOutputStream(); final var stderr = new ByteArrayOutputStream())
 			{
-			final Process process = builder.start();
+			final var builder = new ProcessBuilder();
+
+			builder.command(command);
+
+			final var process = builder.start();
 
 			process.getInputStream().transferTo(stdout);
 			process.getErrorStream().transferTo(stderr);
 
-			@SuppressWarnings("unused")
 			final int exitCode = process.waitFor();
 
-			//final ExternalProgram program = new ExternalProgram();
-			//program.exitCode = exitCode;
-			//program.output = stdout.toString();
-			//program.error = stderr.toString();
+			return findGoodName.result(exitCode, stdout, stderr);
 			}
-		catch (final InterruptedException ex)
-			{
-			throw new IOException(ex);
-			}
-
-		throw new NotImplementedException();
 		}
-	*/
-
-	/*
-	protected final TemporaryDirectory temporaryDirectory;
-	protected final List<Pair<String, String>> options = new ArrayList<>();
-
-	protected final String program;
-
-	public ExternalProgram2()
-		{
-		this(new TemporaryDirectory());
-		}
-
-	public ExternalProgram2(final TemporaryDirectory temporaryDirectory)
-		{
-		super();
-
-		this.temporaryDirectory = temporaryDirectory;
-
-		throw new NotImplementedException();
-		}
-	*/
-
-	/*
-	protected final void setOption(final String name, final Path value)
-		{
-		setOption(name, notNull(value).toString());
-		}
-	*/
 	}

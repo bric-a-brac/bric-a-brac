@@ -1,5 +1,6 @@
 package program;
 
+import java.io.IOException;
 import annotations.WorkInProgress;
 
 /**
@@ -7,7 +8,7 @@ import annotations.WorkInProgress;
  * @since 0.1.0
  */
 @WorkInProgress
-public interface IScanner extends IExternalProgram //, FailableSupplier<Path, IOException>
+public interface IScanner extends IExternalProgram
 	{
 	/**
 	 * @version 0.1.0
@@ -26,5 +27,7 @@ public interface IScanner extends IExternalProgram //, FailableSupplier<Path, IO
 		{
 		COLOR
 		}
+
+	public void scan() throws IOException;
 	}
 
