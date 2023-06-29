@@ -1,4 +1,4 @@
-package websitegenerator.blog;
+package website.blog;
 
 import annotations.WorkInProgress;
 import websitegenerator.FreeMarker;

@@ -1,4 +1,4 @@
-package websitegenerator;
+package website.generator;
 
 import annotations.WorkInProgress;
 

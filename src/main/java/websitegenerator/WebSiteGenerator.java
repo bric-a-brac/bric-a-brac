@@ -2,6 +2,7 @@ package websitegenerator;
 
 import org.apache.commons.lang3.event.EventListenerSupport;
 import annotations.WorkInProgress;
+import website.generator.IWebSiteGenerator;
 import websitegenerator.engine.IEngine;
 import websitegenerator.engine.ITemplateEngine;
 import websitegenerator.engine.exceptions.EngineException;

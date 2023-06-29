@@ -1,4 +1,4 @@
-package escort;
+package xxx.escort;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.jsoup.nodes.Document;
 import html.Parser;
+import xxx.Client;
 
 import static util.Argument.notNull;
 

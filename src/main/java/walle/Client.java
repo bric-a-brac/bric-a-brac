@@ -14,8 +14,6 @@ import java.util.Optional;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-
-import org.apache.commons.lang3.function.FailableBiFunction;
 import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
 import html.Parser;

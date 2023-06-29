@@ -1,4 +1,4 @@
-package escort;
+package xxx;
 
 import java.io.IOException;
 import org.apache.commons.lang3.function.FailableFunction;
@@ -16,6 +16,8 @@ import static util.Argument.notNull;
  */
 public class Client extends SimpleClient
 	{
+	public static final String USER_AGENT = "Bric-à-Brac X Client";
+
 	public final FailableFunction<String, Document, IOException> get = url -> getAsDocument(url);
 
 	/**

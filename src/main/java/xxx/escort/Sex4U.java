@@ -1,9 +1,10 @@
-package escort;
+package xxx.escort;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import xxx.Client;
 
 public final class Sex4U extends Client
 	{
