@@ -3,6 +3,8 @@ package http;
 import annotations.WorkInProgress;
 
 @WorkInProgress
-public class Client extends AbstractClient implements IDownloader
+public interface IResponse<T>
 	{
+	@WorkInProgress
+	public T getContent();
 	}
