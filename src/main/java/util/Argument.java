@@ -1,8 +1,9 @@
 package util;
 
 import org.apache.commons.math3.exception.NotStrictlyPositiveException;
-import org.apache.commons.math3.exception.NullArgumentException;
 import org.apache.commons.math3.exception.NumberIsTooLargeException;
+import util.exceptions.EmptyArgumentException;
+import util.exceptions.NullArgumentException;
 
 /**
  * @version 0.1.0
@@ -23,6 +24,42 @@ public class Argument
 			}
 
 		return value;
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws EmptyArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final CharSequence notEmpty(final CharSequence argument)
+		{
+		notNull(argument);
+
+		if (argument.isEmpty())
+			{
+			throw new EmptyArgumentException();
+			}
+
+		return argument;
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws EmptyArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public static final String notEmpty(final String argument)
+		{
+		notNull(argument);
+
+		if (argument.isEmpty())
+			{
+			throw new EmptyArgumentException();
+			}
+
+		return argument;
 		}
 
 	/**

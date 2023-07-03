@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import xxx.Client;
+import xxx.ClientX;
 
-public final class Sex4U extends Client
+public final class Sex4U extends ClientX
 	{
 	public void parse(final Consumer<String> consumer) throws IOException
 		{

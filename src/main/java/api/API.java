@@ -1,67 +1,22 @@
 package api;
 
 import java.io.IOException;
-import java.util.List;
-import org.apache.commons.lang3.NotImplementedException;
-import annotations.Discontinued;
-import http.Client;
+import java.util.Collection;
+import annotations.WorkInProgress;
 
-/**
- * @version 0.1.0
- * @since 0.1.0
- */
-@Discontinued
-@SuppressWarnings("unused")
-public class API extends Client
+@WorkInProgress
+public interface API
 	{
-	/**
-	 * @throws NullArgumentException
-	 * 
-	 * @since 0.1.0
-	 */
-	public API(final String userAgent)
+	@WorkInProgress
+	public static interface IEndPoint<T>
 		{
-		//super(userAgent);
-		super();
+		@WorkInProgress
+		public T get() throws IOException;
+
+		@WorkInProgress
+		public Collection<T> getAll() throws IOException;
 		}
 
-	/**
-	 * @since 0.1.0
-	 */
-	protected <T> IEndPoint<T> getEndPoint(final Class<T> classOfT)
-		{
-		final var e = new EndPoint<T>();
-		//return get(url, JSON(classOfT));
-		throw new NotImplementedException();
-		}
-
-	/**
-	 * @version 0.1.0
-	 * @since 0.1.0
-	 */
-	public class EndPoint<T> implements IEndPoint<T>
-		{
-		/**
-		 * @throws IOException
-		 * 
-		 * @since 0.1.0
-		 */
-		@Override
-		public T get() throws IOException
-			{
-			//API.super.get("url", IContentHandler.TEXT);
-			throw new NotImplementedException();
-			}
-
-		/**
-		 * @throws IOException
-		 * 
-		 * @since 0.1.0
-		 */
-		@Override
-		public List<T> getAll() throws IOException
-			{
-			throw new NotImplementedException();
-			}
-		}
+	@WorkInProgress
+	public <T> IEndPoint<T> getEndPoint(final Class<T> classOfT);
 	}

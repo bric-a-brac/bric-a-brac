@@ -8,7 +8,8 @@ import java.util.function.BiConsumer;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jsoup.nodes.Document;
-import http.SimpleClient;
+
+import http.StaticClient;
 import io.IO;
 
 /**
@@ -28,7 +29,9 @@ public final class Downloader
 
 	public static void download() throws IOException
 		{
-		final var document = new SimpleClient().getAsDocument(URI.create(URL));
+		//StaticClient.getAsDocument(URL, document -> "sdsd");
+		//final var document = new SimpleClient().getAsDocument(URI.create(URL));
+		final var document = StaticClient.getAsDocument(URL);
 
 		final var emojis = parse(document);
 

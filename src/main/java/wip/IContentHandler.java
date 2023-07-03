@@ -1,12 +1,7 @@
-package http.temp;
+package wip;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.net.http.HttpResponse.BodyHandler;
-import java.net.http.HttpResponse.BodySubscribers;
 import com.google.gson.Gson;
-import image.IImage;
 
 /**
  * @version 0.1.0
@@ -17,28 +12,7 @@ public interface IContentHandler<T> extends BodyHandler<T>
 	{
 	public static final Gson GSON = new Gson();
 
-	/**
-	 * @since 0.1.0
-	 */
 	
-
-	/**
-	 * @since 0.1.0
-	 */
-	public static final IContentHandler<BufferedImage> IMAGE = responseInfo ->
-		{
-		return BodySubscribers.mapping(BodySubscribers.ofInputStream(), input ->
-			{
-			try
-				{
-				return IImage.INPUT_STREAM_READER.apply(input);
-				}
-			catch (final IOException ex)
-				{
-				throw new UncheckedIOException(ex);
-				}
-			});
-		};
 
 		/*
 		// BodySubscriber<InputStream> upstream = BodySubscribers.ofInputStream();

@@ -6,7 +6,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import org.apache.commons.lang3.function.FailableRunnable;
 import com.google.gson.Gson;
-import http.Client;
 import image.Icon16;
 import util.Util;
 
@@ -17,7 +16,7 @@ import util.Util;
  * @since 0.1.0
  */
 @SuppressWarnings("unused")
-public final class IcoLED extends Client implements FailableRunnable<IOException>
+public final class IcoLED implements FailableRunnable<IOException>
 	{
 	private static final String USER_AGENT = "IcoLED";
 	private static final String ICONS_DIRECTORY_PREFERENCE = "icons-directory";

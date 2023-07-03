@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.jsoup.nodes.Document;
 import html.Parser;
-import xxx.Client;
+import xxx.ClientX;
 
 import static util.Argument.notNull;
 
-public final class GenevaGirls extends Client
+public final class GenevaGirls extends ClientX
 	{
 	public void parse(final Consumer<Escort> consumer) throws IOException
 		{
@@ -32,11 +32,11 @@ public final class GenevaGirls extends Client
 			{
 			//get.andThen(this::parseSalon).apply(salon).forEach(consumer);
 
-			get(salon, this::parseSalon).forEach(consumer);
+			//get(salon, this::parseSalon).forEach(consumer);
 			}
 		}
 
-	private List<Escort> parseSalon(final Document document) throws IOException
+	private List<Escort> parseSalon(final Document document)
 		{
 		final var girls = document.select("div.girl-list-row").first();
 
@@ -46,13 +46,13 @@ public final class GenevaGirls extends Client
 
 		for (final var link : links)
 			{
-			escorts.add(get(link, this::parseEscort));
+			//escorts.add(get(link, this::parseEscort));
 			}
 
 		return escorts;
 		}
 
-	private Escort parseEscort(final Document document) throws IOException
+	private Escort parseEscort(final Document document)
 		{
 		final var girl = document.select("div.girl-single").first();
 
