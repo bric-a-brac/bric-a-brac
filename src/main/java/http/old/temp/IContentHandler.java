@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/wip/IContentHandler.java
-package wip;
-=======
 package http.old.temp;
->>>>>>> client:src/main/java/http/old/temp/IContentHandler.java
 
 import java.net.http.HttpResponse.BodyHandler;
 import com.google.gson.Gson;

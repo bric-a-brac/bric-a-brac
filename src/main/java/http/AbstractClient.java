@@ -10,7 +10,7 @@ import annotations.WorkInProgress;
 import static util.Argument.notNull;
 
 @WorkInProgress
-public abstract class AbstractClient implements IClient
+public abstract class AbstractClient //implements IClient
 	{
 	protected final HttpClient client;
 
@@ -22,7 +22,7 @@ public abstract class AbstractClient implements IClient
 		client = HttpClient.newHttpClient();
 		}
 
-	@Override
+	//@Override
 	@WorkInProgress
 	public final <T> IResponse<T> send(final IRequest<T> request) throws IOException, InterruptedException
 		{
