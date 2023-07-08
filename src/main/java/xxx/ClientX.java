@@ -1,14 +1,12 @@
 package xxx;
 
-import http.StaticClient;
-
 /**
  * <h4>Client X</h4>
  * 
  * @version 0.1.0
  * @since 0.1.0
  */
-public class ClientX extends StaticClient
+public class ClientX
 	{
 	//public static final String USER_AGENT = "Bric-à-Brac X Client";
 

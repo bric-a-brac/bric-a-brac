@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.net.http.HttpRequest;
 import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.net.http.HttpResponse.BodySubscriber;
@@ -23,7 +24,21 @@ import static util.Argument.notNull;
 @WorkInProgress
 public class HTTP
 	{
+	public static final String USER_AGENT = "User-Agent";
+
 	public static final BodyHandler<String> ISO_8859_1_TO_UTF_8 = responseInfo -> ofString(StandardCharsets.ISO_8859_1, StandardCharsets.UTF_8);
+
+	/**
+	 * @throws NullArgumentException
+	 */
+	@WorkInProgress
+	public static final HttpRequest.Builder addUserAgent(final HttpRequest.Builder builder, final String userAgent)
+		{
+		notNull(builder);
+		notNull(userAgent);
+
+		return builder.header(USER_AGENT, userAgent);
+		}
 
 	/**
 	 * @throws NullArgumentException

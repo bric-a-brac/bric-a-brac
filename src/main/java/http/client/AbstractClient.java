@@ -2,8 +2,11 @@ package http.client;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
+import java.net.http.HttpResponse.BodyHandlers;
+
 import org.apache.commons.lang3.NotImplementedException;
 import annotations.WorkInProgress;
+import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 
@@ -12,11 +15,24 @@ public abstract class AbstractClient implements IClient
 	{
 	protected final HttpClient client;
 
+	/**
+	 * @since 0.1.0
+	 */
 	public AbstractClient()
+		{
+		this(HttpClient.newHttpClient());
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public AbstractClient(final HttpClient client)
 		{
 		super();
 
-		client = HttpClient.newHttpClient();
+		this.client = notNull(client);
 		}
 
 	@Override
@@ -53,7 +69,11 @@ public abstract class AbstractClient implements IClient
 		{
 		notNull(request);
 
-		client.send(request.getHttpRequest(), null);
+		@SuppressWarnings("unused")
+		final var response = client.send(request.getHttpRequest(), request.getBodyHandler());
+
+		// Au cas ou il y a une redirection
+		// TODO: uri = response.uri();
 
 		throw new NotImplementedException();
 		}

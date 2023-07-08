@@ -6,7 +6,7 @@ import java.sql.SQLException;
  * @version 0.1.0
  * @since 0.1.0
  */
-public final class InMemoryDatabase extends SQLite
+public /*final*/ class InMemoryDatabase extends SQLite
 	{
 	private static final String MEMORY = ":memory:";
 

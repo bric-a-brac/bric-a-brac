@@ -16,6 +16,7 @@ public class Get<T> extends AbstractRequest<T> implements IRequest.IGet<T>
 	@WorkInProgress
 	public HttpRequest getHttpRequest()
 		{
+		//return HttpRequest.newBuilder().GET().uri(uri).build();
 		return null;
 		}
 	}

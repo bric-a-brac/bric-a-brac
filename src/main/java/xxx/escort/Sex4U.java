@@ -21,6 +21,7 @@ public final class Sex4U extends ClientX
 
 		var url = "https://sex4u.ch/fr/suisse/escort-girls";
 
+		/*
 		while (url != null)
 			{
 			final var document = getAsDocument(url);
@@ -51,6 +52,7 @@ public final class Sex4U extends ClientX
 				url = null;
 				}
 			}
+		*/
 
 		return links;
 		}

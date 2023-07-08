@@ -1,6 +1,7 @@
 package http.client;
 
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandler;
 import annotations.WorkInProgress;
 
 @WorkInProgress
@@ -35,4 +36,7 @@ public abstract interface IRequest<T>
 
 	@WorkInProgress
 	public HttpRequest getHttpRequest();
+
+	@WorkInProgress
+	public BodyHandler<T> getBodyHandler();
 	}

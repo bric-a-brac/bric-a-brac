@@ -1,41 +1,64 @@
 package http.client;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.net.URI;
 import org.apache.commons.lang3.NotImplementedException;
-import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
+import util.exceptions.NullArgumentException;
 
 @WorkInProgress
-public class SimpleClient extends Client
+public abstract class SimpleClient<T> extends Client implements ISimpleClient<T>
 	{
-	public String getAsString(final URI uri)
-		{
-		return get(new Get<>(uri, new AsString())).getContent();
-		}
-
-	public Document getAsDocument(final URI uri)
-		{
-		return get(new Get<>(uri, new AsDocument())).getContent();
-		}
-
-	@Override
-	public <T> IResponse<T> get(final IRequest.IGet<T> request)
-		{
-		return send(request);
-		}
-
 	@Override
 	@WorkInProgress
-	public <T> IResponse<T> send(final IRequest<T> request)
+	public T get(final URI uri)
+		{
+		throw new NotImplementedException();
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws UncheckedIOException
+	 */
+	@Override
+	public <R> IResponse<R> send(final IRequest<R> request)
 		{
 		try
 			{
-			super.send(request);
+			return super.send(request);
 			}
-		catch (Exception e)
+		catch (final IOException ex)
 			{
+			throw new UncheckedIOException(ex);
 			}
+		catch (final InterruptedException ex)
+			{
+			throw new UncheckedIOException(new IOException(ex));
+			}
+		}
 
-		throw new NotImplementedException();
+	@WorkInProgress
+	public static class Text extends SimpleClient<String>
+		{
+		@Override
+		@WorkInProgress
+		public String get(final URI uri)
+			{
+			send(new Get<String>(uri, null));
+
+			throw new NotImplementedException();
+			}
+		}
+
+	@WorkInProgress
+	public static class Image extends SimpleClient<BufferedImage>
+		{
+		}
+
+	@WorkInProgress
+	public static class Document extends SimpleClient<org.jsoup.nodes.Document>
+		{
 		}
 	}
