@@ -1,14 +1,13 @@
 package web.walle;
 
-import java.net.URI;
 import java.nio.file.Paths;
-import java.sql.SQLException;
 import java.util.List;
-import org.apache.commons.lang3.NotImplementedException;
 import annotations.WorkInProgress;
-import database.InMemoryDatabase;
 import database.SQLite;
 import database.exceptions.DatabaseException;
+
+//import static util.Argument.notEmpty;
+import static util.Argument.notNull;
 
 /**
  * <h4>Axiom</h4>
@@ -17,12 +16,20 @@ import database.exceptions.DatabaseException;
  * @since 0.1.0
  */
 @WorkInProgress
-public final class Axiom extends SQLite //InMemoryDatabase
+public final class Axiom extends SQLite
 	{
+	/**
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
 	public Axiom()
 		{
 		super(Paths.get("walle.sqlite"));
 
+		execute("CREATE TABLE word (TEXT word NOT NULL)");
+
+		/*
 		try
 			{
 			getConnection().createStatement().execute("CREATE TABLE word (TEXT word NOT NULL);");
@@ -31,58 +38,33 @@ public final class Axiom extends SQLite //InMemoryDatabase
 			{
 			throw new DatabaseException(ex);
 			}
+		*/
 		}
 
 	@WorkInProgress
 	public void saveWords(final List<String> words)
 		{
-		try
-			{
-			final var statement = getConnection().prepareStatement("INSERT INTO word VALUES (?)");
+		notNull(words);
 
-			final var c = transaction(() ->
+		final var statement = getPreparedStatement("INSERT INTO word VALUES (?)");
+
+		transaction(() ->
+			{
+			for (final var word : words)
 				{
-				var count = 0;
+				statement.setString(1, word);
 
-				for (final var word : words)
-					{
-					//System.out.println(word);
+				statement.execute();
+				}
 
-					statement.setString(1, word);
-
-					statement.execute();
-
-					count++;
-					}
-
-				return Integer.valueOf(count);
-				});
-
-			System.out.println(c);
-			}
-		catch (final SQLException ex)
-			{
-			throw new DatabaseException(ex);
-			}
+			return null;
+			});
 		}
 
 	/*
-	@Override
-	public <R> R transaction(final FailableSupplier<R, SQLException> supplier)
-		{
-		try
-			{
-			return super.transaction(supplier);
-			}
-		catch (final SQLException ex)
-			{
-			throw new RuntimeException(ex);
-			}
-		}
-	*/
-
 	public int save(final URI uri, final String html)
 		{
 		throw new NotImplementedException();
 		}
+	*/
 	}

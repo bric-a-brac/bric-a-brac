@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.function.FailableSupplier;
+import org.apache.commons.lang3.function.FailableCallable;
 import annotations.WorkInProgress;
 
 /**
@@ -20,44 +20,25 @@ public interface IDatabase<T extends Connection> extends AutoCloseable
 	 */
 	public T getConnection();
 
-	@WorkInProgress
-	public Optional<Integer> getLastInsertID(final PreparedStatement statement);
+	/**
+	 * @since 0.1.0
+	 */
+	public Optional<Integer> getLastInsertID(PreparedStatement statement);
 
-	@WorkInProgress
-	public <R> R transaction(final FailableSupplier<R, SQLException> supplier);
+	/**
+	 * @since 0.1.0
+	 */
+	public PreparedStatement getPreparedStatement(String sql);
 
-	// BUG
-	/*
-	public default <R> R transaction(final FailableSupplier<R, SQLException> supplier) throws SQLException
-		{
-		notNull(supplier);
+	/**
+	 * @since 0.1.0
+	 */
+	public boolean execute(String sql);
 
-		final var connection = getConnection();
-
-		final var oldValue = connection.getAutoCommit();
-
-		try
-			{
-			connection.setAutoCommit(true);
-
-			final var result = supplier.get();
-
-			connection.commit();
-
-			return result;
-			}
-		catch (final SQLException ex)
-			{
-			connection.rollback();
-
-			throw ex;
-			}
-		finally
-			{
-			connection.setAutoCommit(oldValue);
-			}
-		}
-	*/
+	/**
+	 * @since 0.1.0
+	 */
+	public <R> R transaction(FailableCallable<R, SQLException> callable);
 
 	@WorkInProgress
 	public Function<PreparedStatement, Integer> count();

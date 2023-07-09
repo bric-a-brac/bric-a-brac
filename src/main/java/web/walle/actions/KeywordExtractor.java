@@ -1,33 +1,52 @@
 package web.walle.actions;
 
 import java.net.URI;
-import java.util.function.BiConsumer;
 import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
 import parser.Tokenizer;
+import util.exceptions.NullArgumentException;
+import web.walle.Axiom;
 import wip.HTML;
 
 import static util.Argument.notNull;
 
 @WorkInProgress
-public final class KeywordExtractor implements BiConsumer<Document, URI>
+public final class KeywordExtractor extends Action<Document, URI>
 	{
 	private final Tokenizer tokenizer;
 
-	public KeywordExtractor()
+	/**
+	 * @throws NullArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public KeywordExtractor(final Axiom axiom)
 		{
-		this(Tokenizer.DEFAULT);
+		this(axiom, Tokenizer.DEFAULT);
 		}
 
-	public KeywordExtractor(final Tokenizer tokenizer)
+	/**
+	 * @throws NullArgumentException
+	 * 
+	 * @since 0.1.0
+	 */
+	public KeywordExtractor(final Axiom axiom, final Tokenizer tokenizer)
 		{
-		super();
+		super(axiom);
 
 		this.tokenizer = notNull(tokenizer);
 		}
 
 	@Override
 	@WorkInProgress
+	public void accept(final Document document, final URI uri)
+		{
+		final var words = HTML.getWords(document, tokenizer);
+
+		axiom.saveWords(words);
+		}
+
+	/*
 	public void accept(final Document document, final URI uri)
 		{
 		notNull(document);
@@ -37,4 +56,5 @@ public final class KeywordExtractor implements BiConsumer<Document, URI>
 
 		System.out.println(words);
 		}
+	*/
 	}

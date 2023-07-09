@@ -7,12 +7,14 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.function.Function;
 import org.apache.commons.lang3.NotImplementedException;
-import org.apache.commons.lang3.function.FailableSupplier;
+import org.apache.commons.lang3.function.FailableCallable;
 import annotations.WorkInProgress;
 import database.exceptions.DatabaseException;
-import util.Argument;
 import util.exceptions.EmptyArgumentException;
 import util.exceptions.NullArgumentException;
+
+import static util.Argument.notEmpty;
+import static util.Argument.notNull;
 
 @WorkInProgress
 public abstract class AbstractDatabase<T extends Connection> implements IDatabase<T>
@@ -28,7 +30,7 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 		{
 		super();
 
-		this.connection = Argument.notNull(connection);
+		this.connection = notNull(connection);
 		}
 
 	/**
@@ -44,7 +46,7 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 	@WorkInProgress
 	public final Optional<Integer> getLastInsertID(final PreparedStatement statement)
 		{
-		Argument.notNull(statement);
+		notNull(statement);
 
 		try (final var keys = statement.getGeneratedKeys())
 			{
@@ -66,16 +68,78 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 			}
 		}
 
+	/**
+	 * @throws NullArgumentException
+	 * @throws EmptyArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
 	@Override
-	public final <R> R transaction(final FailableSupplier<R, SQLException> supplier)
+	@WorkInProgress
+	public final PreparedStatement getPreparedStatement(final String sql)
 		{
-		Argument.notNull(supplier);
+		notEmpty(sql);
 
 		try
 			{
-			getConnection().setAutoCommit(false);
+			return connection.prepareStatement(sql);
+			}
+		catch (final SQLException ex)
+			{
+			throw new DatabaseException(ex);
+			}
+		}
 
-			return supplier.get();
+	/**
+	 * @throws NullArgumentException
+	 * @throws EmptyArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
+	@Override
+	@WorkInProgress
+	public final boolean execute(final String sql)
+		{
+		notEmpty(sql);
+
+		try
+			{
+			return connection.createStatement().execute(sql);
+			}
+		catch (final SQLException ex)
+			{
+			throw new DatabaseException(ex);
+			}
+		}
+
+	@Override
+	@WorkInProgress
+	public final <R> R transaction(final FailableCallable<R, SQLException> callable)
+		{
+		notNull(callable);
+
+		try
+			{
+			final var oldAutoCommit = connection.getAutoCommit();
+
+			try
+				{
+				connection.setAutoCommit(false);
+
+				return callable.call();
+				}
+			catch (final SQLException catchLater)
+				{
+				connection.rollback();
+
+				throw catchLater;
+				}
+			finally
+				{
+				connection.setAutoCommit(oldAutoCommit);
+				}
 			}
 		catch (final SQLException ex)
 			{
@@ -124,7 +188,7 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 	 */
 	protected static final Connection getConnection(final String connectionString)
 		{
-		Argument.notEmpty(connectionString);
+		notEmpty(connectionString);
 
 		try
 			{
