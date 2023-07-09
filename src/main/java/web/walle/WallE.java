@@ -1,9 +1,13 @@
 package web.walle;
 
+import java.net.URI;
+import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
-import web.walle.actions.KeywordExtractor;
+import web.walle.actions.Actions;
 import web.walle.client.Client;
-import web.walle.client.exceptions.ClientException;
+import web.walle.history.IHistory;
+
+import static util.Argument.notNull;
 
 /**
  * <h4>WallE (WebAllEngine) ;-)</h4>
@@ -14,11 +18,14 @@ import web.walle.client.exceptions.ClientException;
 @WorkInProgress
 public final class WallE
 	{
+	private final Axiom axiom;
 	private final Client client;
 
 	public WallE(final Axiom axiom)
 		{
 		super();
+
+		this.axiom = notNull(axiom);
 
 		client = new Client();
 		}
@@ -26,16 +33,20 @@ public final class WallE
 	@WorkInProgress
 	public void process(final String url)
 		{
-		try
-			{
-			final var document = client.get(url);
-			final var keywords = new KeywordExtractor();
-			keywords.execute(document);
-			}
-		catch (final ClientException ex)
-			{
-			ex.printStackTrace();
-			}
+		final var document = client.get(url);
+
+		process(document, null);
+		}
+
+	@WorkInProgress
+	public void process(final IHistory.IEntry entry)
+		{
+		}
+
+	@WorkInProgress
+	public void process(final Document document, final URI uri)
+		{
+		Actions.getKeywordExtractor(axiom).accept(document, uri);
 		}
 
 	/*

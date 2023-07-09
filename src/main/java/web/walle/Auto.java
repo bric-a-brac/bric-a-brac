@@ -1,6 +1,5 @@
 package web.walle;
 
-import java.sql.SQLException;
 import annotations.WorkInProgress;
 
 /**
@@ -17,10 +16,6 @@ public final class Auto
 		try (final var axiom = new Axiom())
 			{
 			new WallE(axiom).process("https://www.ritzy.ch/");
-			}
-		catch (final SQLException ex)
-			{
-			ex.printStackTrace();
 			}
 		}
 	}

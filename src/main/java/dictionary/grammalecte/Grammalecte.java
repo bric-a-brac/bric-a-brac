@@ -15,11 +15,13 @@ public final class Grammalecte
 
 	public static void main(String[] args) throws Throwable
 		{
+		/*
 		final var dictionary = new Dictionary();
 
 		dictionary.getWords().forEach((key, word) ->
 			{
 			System.out.println(word);
 			});
+		*/
 		}
 	}

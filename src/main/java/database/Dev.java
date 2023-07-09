@@ -8,6 +8,7 @@ public class Dev
 		{
 		try (final var database = new InMemoryDatabase())
 			{
+			/*
 			database.getConnection().createStatement().execute("CREATE TABLE t (INT f)");
 
 			final var statement = database.getConnection().prepareStatement("INSERT INTO t VALUES (?)");
@@ -19,6 +20,7 @@ public class Dev
 			final var id = action.apply(statement);
 
 			id.ifPresent(System.out::println);
+			*/
 
 			/*
 			database.transaction(() ->

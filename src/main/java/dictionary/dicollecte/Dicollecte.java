@@ -1,8 +1,5 @@
 package dictionary.dicollecte;
 
-import java.io.IOException;
-import java.util.Collections;
-
 /**
  * @version 0.1.0
  * @since 0.1.0
@@ -17,6 +14,7 @@ public final class Dicollecte
 		throw new UnsupportedOperationException();
 		}
 
+	/*
 	public static void numbers() throws IOException
 		{
 		final var dictionary = new Dictionary();
@@ -37,16 +35,15 @@ public final class Dicollecte
 
 		//numbers.stream().sorted().forEach(number -> System.out.println(number));
 
-		/*
 		words.forEach((key, list) ->
 			{
-			System.out.println(key + " : " + list);
+			//System.out.println(key + " : " + list);
 			});
-		*/
 		}
+	*/
 
 	public static void main(String[] args) throws Throwable
 		{
-		numbers();
+		//numbers();
 		}
 	}

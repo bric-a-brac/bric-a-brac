@@ -18,8 +18,4 @@ public interface IDictionary<T extends IWord>
 	 * @since 0.1.0
 	 */
 	public Optional<T> getWord(final String word);
-
-	public static void parse() {
-		
-	}
 	}

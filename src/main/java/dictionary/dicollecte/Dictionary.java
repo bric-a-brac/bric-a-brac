@@ -1,22 +1,19 @@
 package dictionary.dicollecte;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import org.apache.commons.lang3.NotImplementedException;
+import annotations.WorkInProgress;
 import dictionary.AbstractDictionary;
-import dictionary.parser.IParser;
 
-import static io.IO.toPath;
-import static util.Argument.notNull;
+//import static io.IO.toPath;
+//import static util.Argument.notNull;
 
 /**
  * @version 0.1.0
  * @since 0.1.0
  */
+@WorkInProgress
 public class Dictionary extends AbstractDictionary<Word>
 	{
 	/**
@@ -24,14 +21,22 @@ public class Dictionary extends AbstractDictionary<Word>
 	 * 
 	 * @since 0.1.0
 	 */
+	/*
 	public Dictionary() throws IOException
 		{
 		super(parser().parse(toPath("../../../Téléchargements/softmaker-hunspell-french-modern-101/fr-moderne.dic")));
 		}
+	*/
 
-	/**
-	 * @since 0.1.0
-	 */
+	@WorkInProgress
+	protected Dictionary(final Map<String, Word> words)
+		{
+		super(words);
+
+		throw new NotImplementedException();
+		}
+
+	/*
 	public Map<Integer, List<String>> getWordsByNumber(final int index)
 		{
 		// TODO: Check index
@@ -57,10 +62,9 @@ public class Dictionary extends AbstractDictionary<Word>
 
 		return words;
 		}
+	*/
 
-	/**
-	 * @since 0.1.0
-	 */
+	/*
 	private static final IParser<Word> parser()
 		{
 		return line ->
@@ -79,4 +83,5 @@ public class Dictionary extends AbstractDictionary<Word>
 			return new Word(word, numbers.collect(Collectors.toList()));
 			};
 		}
+	*/
 	}

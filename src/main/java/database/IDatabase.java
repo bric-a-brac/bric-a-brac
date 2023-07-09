@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Optional;
-import org.apache.commons.lang3.function.FailableFunction;
+import java.util.function.Function;
 import org.apache.commons.lang3.function.FailableSupplier;
-
-import static util.Argument.notNull;
+import annotations.WorkInProgress;
 
 /**
  * @version 0.1.0
  * @since 0.1.0
  */
+@WorkInProgress
 public interface IDatabase<T extends Connection> extends AutoCloseable
 	{
 	/**
@@ -20,39 +20,14 @@ public interface IDatabase<T extends Connection> extends AutoCloseable
 	 */
 	public T getConnection();
 
-	/**
-	 * @throws NullArgumentException
-	 * @throws SQLException
-	 * 
-	 * @since 0.1.0
-	 */
-	public default Optional<Integer> getLastInsertID(final PreparedStatement statement) throws SQLException
-		{
-		notNull(statement);
+	@WorkInProgress
+	public Optional<Integer> getLastInsertID(final PreparedStatement statement);
 
-		try (final var keys = statement.getGeneratedKeys())
-			{
-			if (keys.next())
-				{
-				final var id = keys.getInt(1);
+	@WorkInProgress
+	public <R> R transaction(final FailableSupplier<R, SQLException> supplier);
 
-				if (!keys.wasNull())
-					{
-					return Optional.of(Integer.valueOf(id));
-					}
-				}
-			}
-
-		return Optional.empty();
-		}
-
-	/**
-	 * @throws NullArgumentException
-	 * @throws SQLException
-	 * 
-	 * @since 0.1.0
-	 */
 	// BUG
+	/*
 	public default <R> R transaction(final FailableSupplier<R, SQLException> supplier) throws SQLException
 		{
 		notNull(supplier);
@@ -82,18 +57,22 @@ public interface IDatabase<T extends Connection> extends AutoCloseable
 			connection.setAutoCommit(oldValue);
 			}
 		}
+	*/
 
-	/**
-	 * @since 0.1.0
-	 */
+	@WorkInProgress
+	public Function<PreparedStatement, Integer> count();
+
+	/*
 	public default FailableFunction<PreparedStatement, Integer, SQLException> count()
 		{
 		return statement -> Integer.valueOf(statement.getUpdateCount());
 		}
+	*/
 
-	/**
-	 * @since 0.1.0
-	 */
+	@WorkInProgress
+	public Function<PreparedStatement, PreparedStatement> update();
+
+	/*
 	public default FailableFunction<PreparedStatement, PreparedStatement, SQLException> update()
 		{
 		return statement ->
@@ -103,18 +82,11 @@ public interface IDatabase<T extends Connection> extends AutoCloseable
 			return statement;
 			};
 		}
-
-	/**
-	 * @since 0.1.0
-	 */
-	public default FailableFunction<PreparedStatement, Optional<Integer>, SQLException> lastInsertID()
-		{
-		return statement -> getLastInsertID(statement);
-		}
+	*/
 
 	/**
 	 * @since 0.1.0
 	 */
 	@Override
-	public void close() throws SQLException;
+	public void close();
 	}

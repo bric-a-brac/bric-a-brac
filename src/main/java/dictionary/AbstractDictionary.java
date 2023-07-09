@@ -3,7 +3,7 @@ package dictionary;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-import org.apache.commons.math3.exception.NullArgumentException;
+import util.exceptions.NullArgumentException;
 
 import static util.Argument.notNull;
 

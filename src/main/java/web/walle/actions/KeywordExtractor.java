@@ -1,24 +1,40 @@
 package web.walle.actions;
 
-import java.util.List;
+import java.net.URI;
+import java.util.function.BiConsumer;
 import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
-import html.Parser;
+import parser.Tokenizer;
+import wip.HTML;
+
+import static util.Argument.notNull;
 
 @WorkInProgress
-public final class KeywordExtractor extends Action implements IExtractor<List<String>>
+public final class KeywordExtractor implements BiConsumer<Document, URI>
 	{
-	@Override
-	@WorkInProgress
-	public List<String> extract(final Document document)
+	private final Tokenizer tokenizer;
+
+	public KeywordExtractor()
 		{
-		return Parser.links(document);
+		this(Tokenizer.DEFAULT);
+		}
+
+	public KeywordExtractor(final Tokenizer tokenizer)
+		{
+		super();
+
+		this.tokenizer = notNull(tokenizer);
 		}
 
 	@Override
 	@WorkInProgress
-	public void execute(final Document document)
+	public void accept(final Document document, final URI uri)
 		{
-		System.out.println(extract(document));
+		notNull(document);
+
+		//final var words = Parser.words(document);
+		final var words = HTML.getWords(document, tokenizer);
+
+		System.out.println(words);
 		}
 	}

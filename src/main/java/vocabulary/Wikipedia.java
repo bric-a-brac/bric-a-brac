@@ -1,9 +1,8 @@
 package vocabulary;
 
-/**
- * @version 0.1.0
- * @since 0.1.0
- */
+import annotations.WorkInProgress;
+
+@WorkInProgress
 public final class Wikipedia
 	{
 	public static void main(final String[] args) throws Exception

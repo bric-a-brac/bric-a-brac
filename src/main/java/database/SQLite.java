@@ -1,38 +1,52 @@
 package database;
 
 import java.nio.file.Path;
-import java.sql.SQLException;
 import org.sqlite.SQLiteConnection;
-
-import static util.Argument.notNull;
+import database.exceptions.DatabaseException;
+import util.Argument;
+import util.exceptions.NullArgumentException;
 
 /**
  * @version 0.1.0
  * @since 0.1.0
  */
-public class SQLite extends Database<SQLiteConnection>
+public class SQLite extends AbstractDatabase<SQLiteConnection>
 	{
 	protected static final String CONNECTION_STRING = "jdbc:sqlite:%s";
 
 	/**
 	 * @throws NullArgumentException
-	 * @throws SQLException
+	 * @throws DatabaseException
 	 * 
 	 * @since 0.1.0
 	 */
-	protected SQLite(final String connectionString) throws SQLException
+	public SQLite(final Path path)
 		{
-		super(connectionString);
+		this(getConnection(path));
 		}
 
 	/**
 	 * @throws NullArgumentException
-	 * @throws SQLException
+	 * @throws EmptyArgumentException
+	 * @throws DatabaseException
 	 * 
 	 * @since 0.1.0
 	 */
-	public SQLite(final Path path) throws SQLException
+	protected SQLite(final SQLiteConnection connection)
 		{
-		super(String.format(CONNECTION_STRING, notNull(path)));
+		super(connection);
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
+	private static final SQLiteConnection getConnection(final Path path)
+		{
+		Argument.notNull(path);
+
+		return (SQLiteConnection) getConnection(String.format(CONNECTION_STRING, path));
 		}
 	}
