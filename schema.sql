@@ -1,0 +1,32 @@
+
+BEGIN TRANSACTION;
+
+CREATE TABLE job
+	(
+	url TEXT NOT NULL PRIMARY KEY
+	);
+
+/*
+CREATE TABLE webpage
+	(
+	TEXT url NOT NULL PRIMARY KEY,
+	TEXT html NOT NULL
+	);
+
+CREATE TABLE link
+	(
+	TEXT url NOT NULL
+	);
+
+CREATE TABLE keyword
+	(
+	TEXT word NOT NULL
+	);
+
+CREATE TABLE history
+	(
+	TEXT url NOT NULL
+	);
+*/
+
+COMMIT;

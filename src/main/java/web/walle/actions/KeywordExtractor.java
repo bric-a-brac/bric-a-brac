@@ -1,35 +1,18 @@
 package web.walle.actions;
 
-import java.net.URI;
-import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
-import parser.Tokenizer;
-import util.exceptions.NullArgumentException;
-import web.walle.Axiom;
-import wip.HTML;
-
-import static util.Argument.notNull;
 
 @WorkInProgress
-public final class KeywordExtractor extends Action<Document, URI>
+public final class KeywordExtractor //extends Action<Document, URI>
 	{
+	/*
 	private final Tokenizer tokenizer;
 
-	/**
-	 * @throws NullArgumentException
-	 * 
-	 * @since 0.1.0
-	 */
 	public KeywordExtractor(final Axiom axiom)
 		{
 		this(axiom, Tokenizer.DEFAULT);
 		}
 
-	/**
-	 * @throws NullArgumentException
-	 * 
-	 * @since 0.1.0
-	 */
 	public KeywordExtractor(final Axiom axiom, final Tokenizer tokenizer)
 		{
 		super(axiom);
@@ -43,8 +26,9 @@ public final class KeywordExtractor extends Action<Document, URI>
 		{
 		final var words = HTML.getWords(document, tokenizer);
 
-		axiom.saveWords(words);
+		//axiom.saveWords(words);
 		}
+	*/
 
 	/*
 	public void accept(final Document document, final URI uri)

@@ -2,10 +2,12 @@ package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.function.FailableCallable;
+import org.apache.commons.lang3.function.FailableFunction;
+import org.apache.commons.lang3.function.FailableRunnable;
 import annotations.WorkInProgress;
 
 /**
@@ -35,35 +37,35 @@ public interface IDatabase<T extends Connection> extends AutoCloseable
 	 */
 	public boolean execute(String sql);
 
+	@WorkInProgress
+	public <R> R query(String sql, FailableFunction<ResultSet, R, SQLException> mapper);
+
 	/**
 	 * @since 0.1.0
 	 */
-	public <R> R transaction(FailableCallable<R, SQLException> callable);
+	public void transaction(FailableRunnable<SQLException> runnable);
+
+	/**
+	 * @since 0.1.0
+	 */
+	public Integer count(PreparedStatement statement);
+
+	/**
+	 * @since 0.1.0
+	 */
+	public default Function<PreparedStatement, Integer> count()
+		{
+		return this::count;
+		}
 
 	@WorkInProgress
-	public Function<PreparedStatement, Integer> count();
-
-	/*
-	public default FailableFunction<PreparedStatement, Integer, SQLException> count()
-		{
-		return statement -> Integer.valueOf(statement.getUpdateCount());
-		}
-	*/
+	public PreparedStatement update(PreparedStatement statement);
 
 	@WorkInProgress
-	public Function<PreparedStatement, PreparedStatement> update();
-
-	/*
-	public default FailableFunction<PreparedStatement, PreparedStatement, SQLException> update()
+	public default Function<PreparedStatement, PreparedStatement> update()
 		{
-		return statement ->
-			{
-			statement.executeUpdate();
-
-			return statement;
-			};
+		return this::update;
 		}
-	*/
 
 	/**
 	 * @since 0.1.0

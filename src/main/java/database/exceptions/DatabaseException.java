@@ -42,6 +42,7 @@ public class DatabaseException extends RuntimeException
 
 	/**
 	 * @throws NullArgumentException
+	 * @throws IllegalArgumentException Si pas instanceof SQLException
 	 * 
 	 * @since 0.1.0
 	 */
@@ -50,13 +51,13 @@ public class DatabaseException extends RuntimeException
 		{
 		notNull(throwable);
 
-		// TODO: initCause
-
 		if (throwable instanceof SQLException)
 			{
+			return super.initCause(throwable);
 			}
 
-		return super.initCause(throwable);
+		// TODO: Error
+		throw new IllegalArgumentException("Not SQLException");
 		}
 
 	/**

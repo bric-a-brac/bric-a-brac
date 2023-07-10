@@ -2,6 +2,7 @@ package web.walle.client;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpClient.Redirect;
@@ -11,8 +12,13 @@ import java.time.Duration;
 import org.jsoup.nodes.Document;
 import annotations.WorkInProgress;
 import html.Parser;
+import util.exceptions.EmptyArgumentException;
+import util.exceptions.NullArgumentException;
+import web.walle.client.exceptions.ClientException;
 import web.walle.client.exceptions.GetException;
 import wip.HTTP;
+
+import static util.Argument.notEmpty;
 
 @WorkInProgress
 public final class Client
@@ -32,30 +38,7 @@ public final class Client
 			.build();
 		}
 
-	/*
-	@WorkInProgress
-	public HttpResponse<String> get(final String url)
-		{
-		try
-			{
-			final var request = getHttpRequest(url);
-
-			final var response = client.send(request, BodyHandlers.ofString());
-
-			if (response.statusCode() < 400)
-				{
-				// Si il y a eu des redirections (!!! il faut définir followRedirects)
-				System.out.println(response.uri());
-				}
-
-			return response;
-			}
-		catch (final IOException | InterruptedException ex)
-			{
-			throw new GetException();
-			}
-		}
-	*/
+	//public void get(Function dsff)
 
 	@WorkInProgress
 	public Document get(final String url)
@@ -77,21 +60,45 @@ public final class Client
 				}
 
 			// TODO: Message
-			throw new GetException(/* statusCode > 400 */);
+			throw new GetException(new IOException("statusCode > 400"));
 			}
-		catch (final IOException | InterruptedException ex)
+		catch (final InterruptedException ex)
 			{
-			throw new GetException();
+			throw new GetException(new IOException(ex));
+			}
+		catch (final IOException ex)
+			{
+			throw new GetException(ex);
 			}
 		}
 
-	@WorkInProgress
-	private HttpRequest getHttpRequest(final String url)
+		@WorkInProgress
+	protected final HttpRequest getHttpRequest(final String url)
 		{
-		var builder = HttpRequest.newBuilder().GET().uri(URI.create(url));
+		var builder = HttpRequest.newBuilder().GET().uri(toURI(url));
 
 		builder = HTTP.addUserAgent(builder, USER_AGENT);
 
 		return builder.build();
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws EmptyArgumentException
+	 * @throws ClientException
+	 */
+	@WorkInProgress
+	protected final URI toURI(final String url)
+		{
+		notEmpty(url);
+
+		try
+			{
+			return new URI(url);
+			}
+		catch (final URISyntaxException ex)
+			{
+			throw new ClientException(new IOException(ex));
+			}
 		}
 	}

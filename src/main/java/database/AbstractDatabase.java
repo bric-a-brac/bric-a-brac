@@ -3,11 +3,11 @@ package database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
-import java.util.function.Function;
-import org.apache.commons.lang3.NotImplementedException;
-import org.apache.commons.lang3.function.FailableCallable;
+import org.apache.commons.lang3.function.FailableFunction;
+import org.apache.commons.lang3.function.FailableRunnable;
 import annotations.WorkInProgress;
 import database.exceptions.DatabaseException;
 import util.exceptions.EmptyArgumentException;
@@ -16,7 +16,12 @@ import util.exceptions.NullArgumentException;
 import static util.Argument.notEmpty;
 import static util.Argument.notNull;
 
-@WorkInProgress
+/**
+ * <h4>AbstractDatabase</h4>
+ * 
+ * @version 0.1.0
+ * @since 0.1.0
+ */
 public abstract class AbstractDatabase<T extends Connection> implements IDatabase<T>
 	{
 	protected final T connection;
@@ -42,8 +47,13 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 		return connection;
 		}
 
+	/**
+	 * @throws NullArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
 	@Override
-	@WorkInProgress
 	public final Optional<Integer> getLastInsertID(final PreparedStatement statement)
 		{
 		notNull(statement);
@@ -76,7 +86,6 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 	 * @since 0.1.0
 	 */
 	@Override
-	@WorkInProgress
 	public final PreparedStatement getPreparedStatement(final String sql)
 		{
 		notEmpty(sql);
@@ -99,7 +108,6 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 	 * @since 0.1.0
 	 */
 	@Override
-	@WorkInProgress
 	public final boolean execute(final String sql)
 		{
 		notEmpty(sql);
@@ -114,11 +122,42 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 			}
 		}
 
+	/**
+	 * @throws NullArgumentException
+	 * @throws EmptyArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
 	@Override
 	@WorkInProgress
-	public final <R> R transaction(final FailableCallable<R, SQLException> callable)
+	public final <R> R query(final String sql, final FailableFunction<ResultSet, R, SQLException> mapper)
 		{
-		notNull(callable);
+		notEmpty(sql);
+		notNull(mapper);
+
+		try
+			{
+			final var records = connection.createStatement().executeQuery(sql);
+
+			return mapper.apply(records);
+			}
+		catch (final SQLException ex)
+			{
+			throw new DatabaseException(ex);
+			}
+		}
+
+	/**
+	 * @throws NullArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
+	@Override
+	public final void transaction(final FailableRunnable<SQLException> runnable)
+		{
+		notNull(runnable);
 
 		try
 			{
@@ -128,7 +167,7 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 				{
 				connection.setAutoCommit(false);
 
-				return callable.call();
+				runnable.run();
 				}
 			catch (final SQLException catchLater)
 				{
@@ -147,18 +186,48 @@ public abstract class AbstractDatabase<T extends Connection> implements IDatabas
 			}
 		}
 
+	/**
+	 * @throws NullArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
 	@Override
-	@WorkInProgress
-	public final Function<PreparedStatement, Integer> count()
+	public final Integer count(final PreparedStatement statement)
 		{
-		throw new NotImplementedException();
+		notNull(statement);
+
+		try
+			{
+			return Integer.valueOf(statement.getUpdateCount());
+			}
+		catch (final SQLException ex)
+			{
+			throw new DatabaseException(ex);
+			}
 		}
 
+	/**
+	 * @throws NullArgumentException
+	 * @throws DatabaseException
+	 * 
+	 * @since 0.1.0
+	 */
 	@Override
-	@WorkInProgress
-	public final Function<PreparedStatement, PreparedStatement> update()
+	public final PreparedStatement update(final PreparedStatement statement)
 		{
-		throw new NotImplementedException();
+		notNull(statement);
+
+		try
+			{
+			statement.executeUpdate();
+
+			return statement;
+			}
+		catch (final SQLException ex)
+			{
+			throw new DatabaseException(ex);
+			}
 		}
 
 	/**
